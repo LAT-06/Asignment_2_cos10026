@@ -1,0 +1,165 @@
+/*
+filename: Vo Ngoc Nam
+author: Ngoc Nam
+Created: 20 January 2025
+Description: about.html
+*/
+
+/* set the background color of the body to gold color and use flex box */
+body {
+    color: #e3e3e3;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+/* change the style and align the table to the center of the page */
+th, td {
+    border: 4px solid #daaa52;   
+    padding: 0.8em;
+}
+
+th {
+    font-weight: bold;
+}
+
+td {
+    background-color: #212121cb;
+}
+
+table {
+    position: static;
+    top: 100vh;
+    left: 3vw;
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+    background-color: #151515;
+}
+
+/* style image */
+figure {
+    margin: 0;
+    flex-shrink: 0;
+    float: right;
+    clear: both;
+}
+
+figure img {
+    border: 1px solid #00000000;
+    max-width: 150px;
+    height: auto;
+}
+
+img {
+    max-width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    
+}
+
+/* make the slide show responsive */ 
+.container{
+    position: relative;
+    /* top: calc(50% - 300px);*/
+    left: 28%;
+    width: 45vw;
+    height: 50vh;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #000;
+    flex-wrap: wrap;
+    z-index: 1;
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    font-size: 1vw;
+    width: 7vw;
+    border-radius: 50%;
+    color: #daaa52;
+    font-weight: 400;
+    aspect-ratio: 1 / 1;
+}
+
+.box:hover {
+    cursor: pointer;
+    font-weight: bolder;
+    color: #000;
+    background-color: #daaa52;
+    
+    box-shadow: 10px 10px 20px rgb(218, 170, 82);
+}
+
+/* animation to move the slide show */
+.container #box-1:hover ~ .slider .slide{
+    transform: translateY(0%);
+}
+
+.container #box-2:hover ~ .slider .slide{
+    transform: translateY(-105%);
+}
+
+.container #box-3:hover ~ .slider .slide{
+    transform: translateY(-207%);
+}
+
+.container #box-4:hover ~ .slider .slide{
+    transform: translateY(-310%);
+}
+
+.container #box-5:hover ~ .slider .slide{
+    transform: translateY(-415%);
+}
+
+.slider{
+    background-color: #daaa52;
+    border-radius: 10px;
+    width: 100%;
+    height: 70%;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    position: relative;
+    overflow: hidden;
+    /* top: 13vh;
+    left: 27vw; */
+}
+
+.slide{
+    transition: 0.9s ease-in-out;
+    min-width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* style the definition list */
+dl {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+dt {
+    width: 150px; /* Set a fixed width for consistent alignment */
+    font-weight: bold;
+}
+
+dd {
+    margin: 0;
+    flex: 1; /* Allow the text to take up the remaining space */
+}

@@ -1,0 +1,95 @@
+/*
+filename: Ho Quoc Khanh
+author: Khanh
+Created: 12 February 2025
+Description: enhancements.html
+*/
+
+/* main tag Styling: column-flex min-height 500px */
+main{
+    color: white;
+    width: 90vw;
+    height: auto;
+    min-height: 500px;
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+}
+
+/* H1 h2 tag margin and padding Styling */
+h1{
+    margin-top: 0;
+    color: #FFE715;
+    text-align: center;
+}
+
+h2{
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* overall-enhancements area styling */
+.overall-enhancements{
+    align-self: center;
+    width: 70vw;
+    padding: 25px;
+}
+/* content inside enhancements styling */
+.content{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    row-gap: 50px;
+}
+/* box Styling: border wrapping key-word enhancements */
+.box{
+    border-radius: 25px;
+    padding: 5px;
+    width: 35%;
+    border: 5px solid #6d6d6d;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.box:hover .text{
+    display: block;
+}
+
+/* ul ol and li tag styling for aesthetic indentation */
+ul{
+    list-style-type: disc;
+    padding-left: 10px;
+}
+ol{
+    padding-left: 20px;
+}
+
+li{
+    padding-top: 15px;
+}
+
+/* aesthetic indentation for list */
+.text{
+    position: relative;
+    padding: 15px;
+    padding-top: 0px;
+    display: none;
+}
+/* CSS media query for responsiveness */
+@media screen and (max-width: 800px) {
+    .box{
+        width: 70%;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    color: #FFE715;
+}

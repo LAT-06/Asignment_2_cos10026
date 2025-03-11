@@ -1,0 +1,176 @@
+/*
+Filename: Application Form
+Author: Nguyen Lam Minh Huy
+Created: 22th Jan 2025
+Description: apply.html
+*/
+
+/* Centering the body content and setting the font */
+body{
+    display: flex;
+    font-family: 'Montserrat';
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Fade-in animation for the navigation bar */
+nav{
+    animation: fade-down 0.5s;
+}
+
+/* Styling for the title */
+.title{
+    text-align: center;
+    padding: 0px;
+    color: #DAAA52; /* Gold color */
+    border-radius: 10px;
+    animation: fade-up 0.5s;
+}
+
+/* Styling for the heading */
+h1{
+    font-size: 40px;
+}
+
+/* Styling for the form container */
+.form-container {
+    width: 700px;    
+    padding: 19px;
+    flex-direction: column;
+    overflow: auto;
+    margin-bottom: 10px;
+    
+    background-color: #1e1e1e; /* Dark background color */
+    border-radius: 15px;
+    animation: fade-up 0.9s;
+}
+
+/* Text color for input boxes */
+.input-box {
+    color: white;
+}
+
+/* Round the border of the gender selection */
+form .gender-details{
+    border-radius: 15px;
+}
+
+/* Layout for the form contents */
+.form-container form .user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Layout for the input textboxes */
+.user-details .input-box input{
+    height: 22px;
+    width: 100%;
+}
+
+/* Layout of each input box inside the form */
+form .user-details .input-box {
+    margin: 20px 0 0;
+    width: calc(100%/ 2 - 20px);
+}
+
+/* Gender selection box layout */
+form .gender-details .category {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+/* State selection dropdown styling */
+form .input-box select {
+    background-color: #DAAA52;
+    border-radius: 10px;
+}
+
+/* Color and rounded borders for input fields and textarea */
+form .input-box input, textarea {
+    background-color: #DAAA52;
+    border-radius: 10px;
+}
+
+/* Skill category layout */
+form .input-box .skill-category {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+/* Button styling */
+form .button {
+    height: 45px;
+    margin: 10px 0;
+}
+
+/* Styling for the submit button */
+form .button input{
+    font-family: 'Montserrat';
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    font: bold 15pt '';
+    background: linear-gradient(270deg, #DAAA52, rgb(247, 225, 104));
+}
+
+/* Hover effect for button */
+.button input:hover {
+    border: 1px solid #07affd;
+}
+
+/* Transform submit button text to uppercase */
+input[type="submit"] {
+    text-transform: uppercase;
+}
+
+/* Styling for input fields and textarea */
+input, textarea {
+    border: 1px solid #000000;
+    outline: none;
+    transition: all 0.30s ease-in-out;
+}
+
+/* Styling for footer */
+footer {
+    color: #DAAA52;
+}
+
+/* Hover effect for input fields and textarea */
+input:hover, textarea:hover{
+    border: 1px solid #07affd;
+}
+
+/* Fade-up animation keyframes */
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+}
+
+/* Fade-down animation keyframes */
+@keyframes fade-down {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 584px) {
+    .form-container{
+        max-width: 100%;
+    }
+}

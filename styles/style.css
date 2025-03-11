@@ -1,0 +1,381 @@
+/*
+filename: style.css & index.html
+author: Lam An Thinh
+Created: 20 January 2025
+Description: homepage
+*/
+/* Body Styling */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Black background */
+    font-family: 'Montserrat', sans-serif;
+    display: block; /* Cho phép trang cuộn */
+}
+
+/* Home Page */
+.home_page {
+    position: relative;
+    height: 100vh; /* Chiều cao toàn màn hình */
+    overflow: hidden; /* Đảm bảo nội dung không bị tràn */
+    text-align: center;
+}
+
+.home_page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../assets/img/bg.jpg) no-repeat center center/cover;
+    opacity: 0; /* Bắt đầu ẩn */
+    animation: fadeInBackground 1s ease-in-out forwards; /* Kích hoạt animation */
+    z-index: -1; /* Đặt background bên dưới nội dung */
+}
+
+/* Animation cho fade-in */
+@keyframes fadeInBackground {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#slogan {
+    color: white;
+    position: absolute;
+    top: 200px; /* Vị trí theo chiều dọc */
+    left: -5%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+    opacity: 0; /* Ban đầu ẩn */
+    animation: slideIn 1s ease-out forwards; /* Animation trượt vào */
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(0, -50%); /* Bắt đầu từ mép trái */
+    }
+    to {
+        opacity: 1;
+        transform: translate(23%, -50%); /* Kết thúc ở vị trí `left: 23%` */
+    }
+}
+
+
+.innovation {
+    top: -50px;
+    left: -25px;
+    color: white;
+    position: relative; /* Đổi từ absolute sang relative để giữ nó nằm trong dòng chữ */
+    display: inline; /* Đảm bảo chữ "Beyond" và "Boundaries" nằm trên cùng một dòng */
+    margin-left: 0.5em; /* Khoảng cách giữa "Beyond" và "Boundaries" */
+    white-space: nowrap; /* Ngăn việc xuống dòng */
+}
+
+/* Nav Container */
+nav {
+    backdrop-filter: blur(100%);
+    position: relative;
+    background-color: #111; /* Slightly lighter black for the nav bar */
+    width: 500px;
+    height: 60px;
+    margin: 20px auto; /* Center horizontally */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Buttons */
+.btn {
+    color: #fff; /* White text */
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.btn:hover {
+    color: #ddd; /* Light gray text on hover */
+}
+
+/* Horizontal Bars */
+.line {
+    position: absolute;
+    height: 4px;
+    background-color: #fff; /* White lines */
+    transition: all 0.3s ease;
+}
+
+.line.top {
+    width: 40px;
+    top: -6px;
+    left: 10px;
+}
+
+.line.bottom {
+    width: 40px;
+    bottom: -6px;
+    left: 450px;
+}
+/* On Hover: Move lines to align with the hovered button */
+.btn:nth-child(1):hover ~ .line.top {
+left: calc(9.5% - 20px); /* Align with the first button */
+}
+.btn:nth-child(1):hover ~ .line.bottom {
+left: calc(9.5% - 20px); /* Align with the first button */
+}
+
+.btn:nth-child(2):hover ~ .line.top {
+left: calc(27.5% - 20px); /* Align with the second button */
+}
+.btn:nth-child(2):hover ~ .line.bottom {
+left: calc(27.5% - 20px); /* Align with the second button */
+}
+
+.btn:nth-child(3):hover ~ .line.top {
+left: calc(45.5% - 20px); /* Align with the third button */
+width: 25px;
+}
+.btn:nth-child(3):hover ~ .line.bottom {
+left: calc(45.5% - 20px); /* Align with the third button */
+width: 25px;
+}
+
+.btn:nth-child(4):hover ~ .line.top {
+left: calc(59.7% - 20px); /* Align with the fourth button */
+}
+.btn:nth-child(4):hover ~ .line.bottom {
+left: calc(59.7% - 20px); /* Align with the fourth button */
+}
+
+.btn:nth-child(5):hover ~ .line.top {
+left: calc(78% - 20px); /* Align with the fifth button */
+width: 100px;
+}
+.btn:nth-child(5):hover ~ .line.bottom {
+width: 100px;
+left: calc(78% - 20px); /* Align with the fifth button */
+} 
+
+
+.frame {
+    width: 90%;
+    margin: 40px auto;
+}
+
+.frame a{
+    margin: 20px;
+    top: 180px;
+    left: -450px;
+	text-decoration: none;
+    animation: slideIn 1s ease-out forwards;
+}
+
+.custom-btn {
+    width: 115px;
+    height: 25px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 1s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 
+    2px 2px 0px #FBC403,
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+
+.btn-10 {
+    background: #000;
+    color: #fff;
+    font-weight: 800;
+    border: none;
+    transition: all 1s ease;
+    overflow: hidden;
+}
+
+.btn-10:after {
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+    transform: scale(.1);
+}
+
+.btn-10:hover {
+    color: #020101;
+    border: none;
+    background: transparent;
+}
+
+.btn-10:hover:after {
+    background: #FBC403;
+    transform: scale(1);
+}
+
+/* Section 1: Hình ảnh nhóm */
+.team-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: black;
+}
+
+.team-section h2 {
+    color: #FBC403;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.team-image {
+    width: 90%;
+    max-width: 600px;
+    height: 300px;
+    margin: 0 auto;
+    background: url(../assets/gr_img/3725ee46ec31536f0a201.jpg) no-repeat center center/cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Section 2: Thông tin doanh số */
+.sales-info {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.stat-number {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stat-item {
+    width: 300px;
+    margin: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.stat-label {
+    font-size: 1.6em; /* Tăng kích thước lên 1.6 lần so với font mặc định */
+    color: goldenrod;
+}
+
+.stat-value {
+    font-size: 2.4em; /* Tăng kích thước lên 2.4 lần so với font mặc định */
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .stat-item {
+        width: 100%;
+        margin: 10px;
+    }
+}
+
+/* Blur Container */
+/* Blur Container */
+.blur-container {
+    top: 300px;
+    position: relative;
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 90%;
+    background: rgba(0, 0, 0, 0.5); /* Nền mờ */
+    backdrop-filter: blur(10px); /* Hiệu ứng blur */
+    border-radius: 10px; /* Bo góc */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Main title*/
+.blur-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(90deg, #d0c312, goldenrod); /* Gradient màu vàng */
+    background-clip: text; /* Chuẩn hóa CSS */
+    margin-bottom: 10px;
+    opacity: 0; /* Ban đầu ẩn */
+    animation: slideInFromLeft 1s ease-out forwards; /* Hiệu ứng animation */
+    animation-delay: 0.5s; /* Bắt đầu sau 0.5 giây */
+}
+
+/* Mô tả */
+.blur-description {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #dcdcdc;
+    margin: 0;
+    opacity: 0; /* Ban đầu ẩn */
+    animation: slideInFromLeft 1s ease-out forwards; /* Hiệu ứng animation */
+    animation-delay: 1s; /* Bắt đầu sau 1.5 giây */
+}
+
+/* Keyframes để tạo hiệu ứng slide-in */
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px); /* Bắt đầu từ vị trí lệch trái */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Kết thúc ở vị trí ban đầu */
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #111;
+    color: #FBC403;
+    text-align: center;
+    padding: 20px 0;
+    position: relative; /* Không cố định footer */
+    width: 100%;
+    font-size: 15px;
+    box-shadow: 0 -4px 10px rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+    margin: 8px 0;
+}
+
+footer a {
+    color: #FBC403;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #ffe437;
+}

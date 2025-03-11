@@ -1,0 +1,367 @@
+/*
+filename: Ho Quoc Khanh
+author: Khanh
+Created: 20 January 2025
+Description: jobs.html
+*/
+
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+/* Global Body styling: 
+    column-flex
+*/
+body{
+    color: #FBFCD4;
+    display: flex;
+    font-family: 'Montserrat';
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Start from the top */
+    height: 100vh;
+}
+
+/* Page Header Styling */
+#page-header{
+    margin-bottom: 10px
+}
+
+/* Text-container Styling */
+.text-container{
+    width: 100%;
+    padding: 0px 10px;
+    cursor: pointer;
+    justify-self: center;
+}
+
+/* Bright yellow h1 */
+h1{
+    font: normal calc(2rem + 0.5vw) 'Montserrat'; /* Responsive Font size */
+    color: #FFE715;
+    text-align: center;
+    animation: slideInLeftH1 1.25s ease-in-out; /* SlideIn Effect */
+}
+
+/* Middle part wrapper*/
+#mid{
+    position: relative;
+    padding-bottom: 50px;
+    width: 98vw;
+    display: flex;
+}
+
+/* main tag Styling*/
+main{
+    min-width: 100px;
+    margin: 20px;
+    padding-left: 20px;
+    width: calc(100% - 25vw - 160px);
+    background-color: black;
+}
+/* main-wrapper styling */
+.main-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    row-gap: 100px;
+    justify-content: space-evenly;
+}
+
+/* Job Description Card styling with lift-up hovering effects */
+.card{
+    overflow: hidden;
+    border-radius: 15px;
+    color: black;
+    background-color: #1e1e1e;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: calc(50% - 60px);
+    min-width: 320px;
+    max-width: 480px;
+}
+
+.card:hover{
+    transform: translateY(-2.5%);
+    box-shadow: 0px 2px 16px gray;
+}
+
+/* Orange card-header */
+.card-header{
+    padding: 10px 20px;
+    background: #DAA520;
+    text-align: center;
+}
+
+.card-header h2{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* h3, p tag inline */
+h3, p{
+    display: inline;
+}
+/* Highlighting salary */
+.card-salary{
+    color: greenyellow;
+}
+
+/* light gray color for easing feeling to read*/
+.card-body{
+    color: #D3D3D3;
+    padding: 10px 20px;
+}
+
+.card-report{
+    text-align: center;
+}
+
+/* aside tag Styling: appropriate color with floating to the right */
+aside{    
+    margin: 20px;
+    padding: 0px;
+    width: 25vw;
+    min-width: 140px;
+    border-radius: 15px;
+    height: auto;
+    background-color:#101920;
+    border: 4px solid #D3D3D3;
+    float: right;
+    display: flex;
+}
+
+/* Aside wrapper styling */
+.aside-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 5vh;
+    justify-content: space-between;
+}
+
+/* Card flip hovering animation using preserve-3d to 
+maintain position of components in 3D when using transform */
+.card-flip{
+    min-width: 140px;
+    width: 100%;
+    aspect-ratio: 5/7; /* maintain appropriate ratio of width/height */
+    border-radius: 15px;
+    transition: transform 0.6s;
+    color: #FFE715;
+    background-color: #1C1C1C;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.card-flip:hover{
+    transform: rotateY(180deg);
+}
+/* Two faces of the card share mutual styling and some different styling */
+.card-front, .card-back {
+    margin: 0;
+    border-radius: 15px;
+    position: absolute;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card-front{
+    background-color: black;
+    color: #FFE715;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2vw;
+}
+
+.card-back{
+    position: relative;
+    font-size: 1.8vw;
+    transform: rotateY(180deg);
+}
+
+.card-back-header{
+    margin: 0;
+    font-size: 1.4vw;
+    height: 10%;
+    width: 100%;
+    padding-top: 5%;
+    text-align: center;
+}
+
+.card-flip:hover .card-back .card-back-header{
+    animation: slideInDown 0.6s linear;
+}
+/* Back of the card mid container */
+.card-back-mid{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 60%;
+}
+
+/* Drawing progress bar using pure CSS */
+.progress-bar-container{
+    left: 7.5%;
+    width: 3vw;
+    height: 98%;
+    border: 2px solid white;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+
+.card-flip:hover .card-back .card-back-mid .progress-bar-container{
+    animation: slideInLeft 0.6s linear 1;
+}
+
+/* Specific % of already - employed */
+#fsd01-progress-bar{
+    width: 100%;
+    height: 75%;
+    background-color: orange;
+}
+
+#db456-progress-bar{
+    width: 100%;
+    height: 57%;
+    background-color: orange;
+}
+
+#pm789-progress-bar{
+    width: 100%;
+    height: 85%;
+    background-color: orange;
+}
+
+#uxd01-progress-bar{
+    width: 100%;
+    height: 22%;
+    background-color: orange;
+}
+
+/* Responsive font-size for progress bar % */
+.progress-bar-percentage{
+    font-size: 1.2vw;
+}
+/* Specific important metric highlighting in this part */
+.metric-wrapper{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0; /* List-style auto indent */
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    top: -7.5%;
+    left: 40%;
+}
+
+
+.card-flip:hover .card-back .card-back-mid .metric-wrapper{
+    animation: slideInRight 0.6s linear;
+}
+
+.metric-stats{
+    width: 100%;
+    display: block;
+    float: left;
+    font-size: 4vw;
+}
+/* Card-back-footer styling */
+.card-back-footer{
+    font-size: 1.5vw;
+    padding-top: 10%;
+    height: 30%;
+    width: 100%;
+    text-align: center;
+}
+
+.card-flip:hover .card-back .card-back-footer{
+    animation: slideInUp 0.6s linear;
+}
+
+/* Slide In from the left animation for Heading 1 */
+@keyframes slideInLeftH1{
+    0%{
+        transform: translateX(-10vw);
+    }
+
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+/* Default Slide In effects for 4 directions */
+@keyframes slideInLeft{
+    0%{
+        transform: translateX(-200%);
+    }
+
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideInRight{
+    0%{
+        transform: translateX(100%);
+    }
+
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideInUp{
+    0%{
+        transform: translateY(100%);
+    }
+
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideInDown{
+    0%{
+        transform: translateY(-100%);
+    }
+
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+/* CSS Media query: Modifying the layout ratio as well as card components 
+    to be responsive corresponding to window width */
+@media screen and (max-width: 1160px) {
+    .card{
+        width: calc(100% - 120px);
+    }
+
+    .main-wrapper{
+        justify-content: center;
+    }
+
+    main{
+        width: 60%;
+    }
+
+    aside{
+        position: relative;
+        top: 7.5%;
+        height: 87%;
+        width: 40%;
+    }
+
+    .aside-wrapper{
+        justify-content: space-between;
+    }
+
+  }
