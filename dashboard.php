@@ -1,15 +1,19 @@
 <?php
-// index.php - Trang chủ chính
-session_start(); // Bắt đầu phiên
+// dashboard.php - Trang chính sau khi đăng nhập
+session_start();
+
+// Kiểm tra xem người dùng đã đăng nhập chưa
+if (!isset($_SESSION['username'])) {
+    header('location: login.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Web Group AS1</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body>
     <header class="home_page">
@@ -45,8 +49,8 @@ session_start(); // Bắt đầu phiên
             <?php else: ?>
                 <a href="login.php" class="btn">Đăng nhập</a>
                 <a href="signup.php" class="btn">Đăng ký</a>
-            <?php endif; ?>
-    <!-- Section 1: Hình ảnh nhóm -->
+                <?php endif; ?>
+                <!-- Section 1: Hình ảnh nhóm -->
     <section id="learnmore" class="team-section">
         <h2>Our Team</h2>
         <div class="team-image"></div>

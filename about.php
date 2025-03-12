@@ -10,13 +10,13 @@
 <body class="about_page">
   <header>
     <nav>
-      <a class="btn" href="index.html">Home</a>
-      <a class="btn" href="about.html">About</a>
-      <a class="btn" href="jobs.html">Job</a>
-      <a class="btn" href="apply.html">Apply</a>
-      <a class="btn" href="enhancements.html">Enhancement</a>
+      <a href="index.php" class="btn">Home</a>
+      <a href="about.php" class="btn">About</a>
+      <a href="jobs.php" class="btn">Job</a>
+      <a href="apply.php" class="btn">Apply</a>
+      <a href="enhancements.php" class="btn">Enhancement</a>
       <div class="line top"></div>
-      <div class="line bottom"></div>            
+      <div class="line bottom"></div>
     </nav>
   </header>
   <br>

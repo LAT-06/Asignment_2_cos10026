@@ -10,11 +10,11 @@
 <body>
     <header>
         <nav>
-            <a class="btn" href="index.html">Home</a>
-            <a class="btn" href="about.html">About</a>
-            <a class="btn" href="jobs.html">Job</a>
-            <a class="btn" href="apply.html">Apply</a>
-            <a class="btn" href="enhancements.html">Enhancement</a>
+            <a class="btn" href="index.php">Home</a>
+            <a class="btn" href="about.php">About</a>
+            <a class="btn" href="jobs.php">Job</a>
+            <a class="btn" href="apply.php">Apply</a>
+            <a class="btn" href="enhancements.php">Enhancement</a>
             <div class="line top"></div>
             <div class="line bottom"></div>            
         </nav>
