@@ -25,14 +25,16 @@ include "setting.php";
             <div class="line bottom"></div>
         </nav>
         <?php if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin'): ?>
-            <a href="manage.php">Manage</a>
+            <a href="manage.php" class="admin-link">Manage</a>
         <?php endif; ?>
-        <?php if(isset($_SESSION['username'])): ?>
-                    <a href="logout.php" class="btn">Logout</a>
-                <?php else: ?>
-                    <a href="login.php" class="btn">Login</a>
-                    <a href="signup.php" class="btn">Sign up</a>
-                    <?php endif; ?>
+        <div class="auth-buttons">
+            <?php if(isset($_SESSION['username'])): ?>
+                <a href="logout.php" class="btn">Logout</a>
+            <?php else: ?>
+                <a href="login.php" class="btn">Login</a>
+                <a href="signup.php" class="btn">Sign up</a>
+            <?php endif; ?>
+        </div>
         <div id="page-header" class="text-container">
             <h1>Position Descriptions page</h1>
         </div>

@@ -379,3 +379,50 @@ footer a {
 footer a:hover {
     color: #ffe437;
 }
+
+/* User authentication buttons in top right corner */
+.auth-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+.auth-buttons a {
+    background-color: rgba(17, 17, 17, 0.8);
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.auth-buttons a:hover {
+    background-color: #FBC403;
+    color: #000;
+}
+
+/* Admin link styling */
+.admin-link {
+    position: absolute;
+    top: 20px;
+    right: 150px;
+    padding: 8px 15px;
+    background-color: rgba(17, 17, 17, 0.8);
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+.admin-link:hover {
+    background-color: #FBC403;
+    color: #000;
+}

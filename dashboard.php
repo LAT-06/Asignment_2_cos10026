@@ -17,7 +17,7 @@ if (!isset($_SESSION['username'])) {
 </head>
 <body>
     <header class="home_page">
-        <nav>
+    <nav>
             <a href="index.php" class="btn">Home</a>
             <a href="about.php" class="btn">About</a>
             <a href="jobs.php" class="btn">Job</a>
@@ -26,6 +26,17 @@ if (!isset($_SESSION['username'])) {
             <div class="line top"></div>
             <div class="line bottom"></div>
         </nav>
+        <?php if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin'): ?>
+            <a href="manage.php" class="admin-link">Manage</a>
+        <?php endif; ?>
+        <div class="auth-buttons">
+            <?php if(isset($_SESSION['username'])): ?>
+                <a href="logout.php" class="btn">Logout</a>
+            <?php else: ?>
+                <a href="login.php" class="btn">Login</a>
+                <a href="signup.php" class="btn">Sign up</a>
+            <?php endif; ?>
+        </div>
         <h1 id="slogan" class="animated-text">
             Where Technology Roars<br>
             <br>
@@ -40,12 +51,6 @@ if (!isset($_SESSION['username'])) {
                 The Supreme Animal Quartet© is a leading technology company specializing in providing innovative software solutions and IT services.
             </p>
         </div>
-        <?php if(isset($_SESSION['username'])): ?>
-                    <a href="logout.php" class="btn">Logout</a>
-                <?php else: ?>
-                    <a href="login.php" class="btn">Login</a>
-                    <a href="signup.php" class="btn">Sign up</a>
-                    <?php endif; ?>
     </header>
     
     <br><br><br>
