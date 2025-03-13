@@ -39,9 +39,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
         </div>
     </header>
     <div id="idk">
-        <h1>Position Descriptions page</h1>
         <h1>Admin Management Page</h1>
-        <p>Welcome, Admin! Here you can manage the website.</p>
     </div>
 
 </body>
