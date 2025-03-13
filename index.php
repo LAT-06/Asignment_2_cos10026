@@ -23,6 +23,9 @@ include "setting.php";
             <div class="line top"></div>
             <div class="line bottom"></div>
         </nav>
+        <?php if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin'): ?>
+            <a href="manage.php">Manage</a>
+        <?php endif; ?>
         <?php if(isset($_SESSION['username'])): ?>
                     <a href="logout.php" class="btn">Logout</a>
                 <?php else: ?>
