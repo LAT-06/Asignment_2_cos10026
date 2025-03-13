@@ -40,16 +40,15 @@ if (!isset($_SESSION['username'])) {
                 The Supreme Animal Quartet© is a leading technology company specializing in providing innovative software solutions and IT services.
             </p>
         </div>
+        <?php if(isset($_SESSION['username'])): ?>
+                    <a href="logout.php" class="btn">Logout</a>
+                <?php else: ?>
+                    <a href="login.php" class="btn">Login</a>
+                    <a href="signup.php" class="btn">Sign up</a>
+                    <?php endif; ?>
     </header>
     
     <br><br><br>
-    <?php if(isset($_SESSION['username'])): ?>
-                <a href="dashboard.php" class="btn">Dashboard</a>
-                <a href="logout.php" class="btn">Đăng xuất</a>
-            <?php else: ?>
-                <a href="login.php" class="btn">Đăng nhập</a>
-                <a href="signup.php" class="btn">Đăng ký</a>
-                <?php endif; ?>
                 <!-- Section 1: Hình ảnh nhóm -->
     <section id="learnmore" class="team-section">
         <h2>Our Team</h2>

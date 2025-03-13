@@ -1,7 +1,6 @@
 <?php
-// logout.php - Trang đăng xuất
 session_start();
-session_destroy();
-header('location: login.php');
+session_destroy();  // Hủy tất cả session
+header("Location: index.php"); // Quay về trang chủ
 exit();
 ?>

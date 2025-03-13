@@ -1,6 +1,7 @@
 <?php
 // index.php - Trang chủ chính
 session_start(); // Bắt đầu phiên
+include "setting.php";
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +23,12 @@ session_start(); // Bắt đầu phiên
             <div class="line top"></div>
             <div class="line bottom"></div>
         </nav>
+        <?php if(isset($_SESSION['username'])): ?>
+                    <a href="logout.php" class="btn">Logout</a>
+                <?php else: ?>
+                    <a href="login.php" class="btn">Login</a>
+                    <a href="signup.php" class="btn">Sign up</a>
+                    <?php endif; ?>
         <h1 id="slogan" class="animated-text">
             Where Technology Roars<br>
             <br>
@@ -39,13 +46,6 @@ session_start(); // Bắt đầu phiên
     </header>
     
     <br><br><br>
-    <?php if(isset($_SESSION['username'])): ?>
-                <a href="dashboard.php" class="btn">Dashboard</a>
-                <a href="logout.php" class="btn">Đăng xuất</a>
-            <?php else: ?>
-                <a href="login.php" class="btn">Đăng nhập</a>
-                <a href="signup.php" class="btn">Đăng ký</a>
-            <?php endif; ?>
     <!-- Section 1: Hình ảnh nhóm -->
     <section id="learnmore" class="team-section">
         <h2>Our Team</h2>

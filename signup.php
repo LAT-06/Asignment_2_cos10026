@@ -1,7 +1,7 @@
 <?php
 // signup.php - Trang đăng ký
 session_start();
-include "config.php";
+include "setting.php";
 
 // Xử lý đăng ký khi form được submit
 if (isset($_POST['signup'])) {
@@ -46,43 +46,39 @@ if (isset($_POST['signup'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Đăng ký tài khoản</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Sign up</title>
+    <link rel="stylesheet" type="text/css" href="styles/log_style.css">
 </head>
 <body>
     <div class="container">
         <div class="form-container">
-            <h2>Đăng ký</h2>
+            <h2>Signup</h2>
             <form method="post" action="signup.php">
                 <?php if(isset($error)) { ?>
                     <div class="error"><?php echo $error; ?></div>
                 <?php } ?>
                 
                 <div class="form-group">
-                    <label>Tên người dùng</label>
-                    <input type="text" name="username" required>
+                    <input type="text" name="username" placeholder="Username" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" placeholder="Email" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Mật khẩu</label>
-                    <input type="password" name="password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Xác nhận mật khẩu</label>
-                    <input type="password" name="confirm_password" required>
+                    <input type="password" name="confirm_password" placeholder="Confirm password" required>
                 </div>
                 
                 <div class="form-group">
-                    <button type="submit" name="signup" class="btn">Đăng ký</button>
+                    <button type="submit" name="signup" class="btn">Register</button>
                 </div>
                 
-                <p>Đã có tài khoản? <a href="login.php">Đăng nhập</a></p>
+                <p>Already have account? <a href="login.php">Login</a></p>
             </form>
         </div>
     </div>

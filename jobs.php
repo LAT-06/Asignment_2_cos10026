@@ -18,6 +18,12 @@
             <div class="line top"></div>
             <div class="line bottom"></div>
         </nav>
+        <?php if(isset($_SESSION['username'])): ?>
+                    <a href="logout.php" class="btn">Logout</a>
+                <?php else: ?>
+                    <a href="login.php" class="btn">Login</a>
+                    <a href="signup.php" class="btn">Sign up</a>
+                    <?php endif; ?>
         <div id="page-header" class="text-container">
             <h1>Position Descriptions page</h1>
         </div>

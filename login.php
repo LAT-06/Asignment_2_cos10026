@@ -1,67 +1,93 @@
 <?php
-// login.php - Trang đăng nhập
+// login.php - Login page
 session_start();
 include "setting.php";
 
-// Xử lý đăng nhập khi form được submit
+// Process login when form is submitted
 if (isset($_POST['login'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     
-    // Kiểm tra username
+    // Check username
     $query = "SELECT * FROM users WHERE username='$username' LIMIT 1";
     $result = mysqli_query($conn, $query);
     
     if (mysqli_num_rows($result) == 1) {
         $user = mysqli_fetch_assoc($result);
         
-        // Xác minh mật khẩu
+        // Verify password
         if (password_verify($password, $user['password'])) {
-            // Mật khẩu chính xác
+            // Password is correct
             $_SESSION['username'] = $username;
-            $_SESSION['success'] = "Bạn đã đăng nhập thành công";
+            $_SESSION['success'] = "You have successfully logged in";
             header('location: dashboard.php');
             exit();
         } else {
-            $error = "Tên đăng nhập hoặc mật khẩu không chính xác";
+            $error = "Invalid username or password";
         }
     } else {
-        $error = "Tên đăng nhập hoặc mật khẩu không chính xác";
+        $error = "Invalid username or password";
     }
+}
+
+// Guest login is handled in a separate form
+if (isset($_POST['guest_login'])) {
+    // Set guest session
+    $_SESSION['username'] = 'guest';
+    $_SESSION['is_guest'] = true;
+    
+    // Redirect directly to main page
+    header('location: index.php'); // Change this to your main page name
+    exit();
 }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Đăng nhập</title>
+    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="styles/log_style.css">
 </head>
 <body>
     <div class="container">
         <div class="form-container">
-            <h2>Đăng nhập</h2>
+            <h2>Login</h2>
+            <!-- Regular login form -->
             <form method="post" action="login.php">
                 <?php if(isset($error)) { ?>
                     <div class="error"><?php echo $error; ?></div>
                 <?php } ?>
                 
                 <div class="form-group">
-                    <label>Tên người dùng</label>
-                    <input type="text" name="username" required>
+                    <input type="text" name="username" placeholder="Username" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Mật khẩu</label>
-                    <input type="password" name="password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
                 
                 <div class="form-group">
-                    <button type="submit" name="login" class="btn">Đăng nhập</button>
+                    <button type="submit" name="login" class="btn">Login</button>
                 </div>
                 
-                <p>Chưa có tài khoản? <a href="signup.php">Đăng ký</a></p>
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
             </form>
+            
+            <div class="divider">
+                <span>or</span>
+            </div>
+            
+            <!-- Separate form for guest login -->
+            <form method="post" action="login.php">
+                <div class="form-group">
+                    <button type="submit" name="guest_login" class="btn btn-guest">Continue as Guest</button>
+                </div>
+            </form>
+            
+            <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
         </div>
     </div>
 </body>
