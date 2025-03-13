@@ -144,6 +144,47 @@ input:hover, textarea:hover{
     border: 1px solid #07affd;
 }
 
+/* Styling for the login message */
+.login-message {
+    text-align: center;
+    padding: 30px;
+    color: white;
+    animation: fade-up 0.9s;
+}
+
+.login-message p {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.login-message a {
+    color: #DAAA52;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.login-message a:hover {
+    color: #07affd;
+}
+
+/* Add an underline effect on hover */
+.login-message a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #07affd;
+    transition: width 0.3s ease;
+}
+
+.login-message a:hover::after {
+    width: 100%;
+}
+
 /* Fade-up animation keyframes */
 @keyframes fade-up {
     from {
@@ -172,5 +213,9 @@ input:hover, textarea:hover{
 @media (max-width: 584px) {
     .form-container{
         max-width: 100%;
+    }
+    
+    .login-message {
+        padding: 15px;
     }
 }
