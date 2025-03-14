@@ -219,30 +219,25 @@ maintain position of components in 3D when using transform */
 .card-flip:hover .card-back .card-back-mid .progress-bar-container{
     animation: slideInLeft 0.6s linear 1;
 }
-
+.progress-bar{
+    width: 100%;
+    background-color: orange;
+}
 /* Specific % of already - employed */
-#fsd01-progress-bar{
-    width: 100%;
+#fsd01{
     height: 75%;
-    background-color: orange;
 }
 
-#db456-progress-bar{
-    width: 100%;
+#db456{
     height: 57%;
-    background-color: orange;
 }
 
-#pm789-progress-bar{
-    width: 100%;
+#pm789{
     height: 85%;
-    background-color: orange;
 }
 
-#uxd01-progress-bar{
-    width: 100%;
+#uxd01{
     height: 22%;
-    background-color: orange;
 }
 
 /* Responsive font-size for progress bar % */
