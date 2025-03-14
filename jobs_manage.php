@@ -43,11 +43,12 @@ $numberOfResponsibility = (isset($_SESSION['numberOfResponsibility'])) ? $_SESSI
             <?php endif; ?>
         </div>
     </header>
-    <?php
-
-    ?>
-    <div id="idk">
+    
+    <div id="manageWrapper">
         <h1>Admin Management Job Page</h1>
+        <?php
+
+        ?>
     </div>
 
 </body>
