@@ -26,7 +26,7 @@ include "setting.php";
         </nav>
         <?php if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin'): ?>
           <a href="manage.php" class="admin-link admin-link-1">Manage</a>
-          <a href="jobs_add.php" class="admin-link admin-link-2">Add Jobs</a>
+          <a href="jobs_manage.php" class="admin-link admin-link-2">Manage Jobs</a>
         <?php endif; ?>
         <div class="auth-buttons">
             <?php if(isset($_SESSION['username'])): ?>

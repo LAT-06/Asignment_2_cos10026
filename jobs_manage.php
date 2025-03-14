@@ -6,6 +6,10 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
     header("Location: index.php");
     exit();
 }
+$step = 1;
+$numberOfResponsibility = (isset($_SESSION['numberOfResponsibility'])) ? $_SESSION['numberOfResponsibility'] : 0;
+
+
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -13,11 +17,11 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
     <meta charset="UTF-8">
     <title>Manage</title>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/style-jobs_add.css">
+    <link rel="stylesheet" href="styles/style-jobs_manage.css">
 </head>
 <body>
-<header>
-    <nav>
+    <header>
+        <nav>
             <a href="index.php" class="btn">Home</a>
             <a href="about.php" class="btn">About</a>
             <a href="jobs.php" class="btn">Job</a>
@@ -28,7 +32,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
         </nav>
         <?php if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin'): ?>
             <a href="manage.php" class="admin-link admin-link-1">Manage</a>
-            <a href="jobs_add.php" class="admin-link admin-link-2">Add Jobs</a>
+            <a href="jobs_manage.php" class="admin-link admin-link-2">Manage Jobs</a>
         <?php endif; ?>
         <div class="auth-buttons">
             <?php if(isset($_SESSION['username'])): ?>
@@ -39,6 +43,9 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
             <?php endif; ?>
         </div>
     </header>
+    <?php
+
+    ?>
     <div id="idk">
         <h1>Admin Management Job Page</h1>
     </div>
