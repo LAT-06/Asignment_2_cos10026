@@ -1,7 +1,79 @@
 #manageWrapper{
-    color: aliceblue;
+    width: 80vw;
+    height: auto;
+    min-height: 20vw;
+    justify-self: center;
+    position: relative;
 }
 
 h1{
-    color: aliceblue;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #DAA520;
+}
+
+.form-area{
+    background-color: #1e1e1e;
+    color: #D3D3D3;
+    width: 60vw;
+    height: auto;
+    padding: 25px;
+    border-radius: 20px;
+    justify-self: center;
+    position: relative;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+h2{
+    margin-top: 0;
+    font-size: 2rem;
+    text-align: center;
+    color: #DAA520;
+}
+input, textarea {
+    border-radius: 5px;
+    background-color: lightgray;
+    resize: none;
+}
+.updateTitle{
+    font-size: 1.3rem;
+}
+
+table{
+    background-color: lightgray;
+    color: black;
+}
+
+
+.option-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+.submitBtn{
+    margin-top: 25px;
+    background-color: #DAA520;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    align-self: center;
+    position: relative;
+}
+
+.submitBtn:hover{
+    margin-top: 25px;
+    background-color: hsl(43, 74%, 39%);
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    align-self: center;
+    position: relative;
 }
