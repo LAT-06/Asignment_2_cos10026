@@ -27,7 +27,8 @@ if (!isset($_SESSION['username'])) {
             <div class="line bottom"></div>
         </nav>
         <?php if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin'): ?>
-            <a href="manage.php" class="admin-link">Manage</a>
+            <a href="manage.php" class="admin-link admin-link-1">Manage</a>
+            <a href="jobs_add.php" class="admin-link admin-link-2">Add Jobs</a>
         <?php endif; ?>
         <div class="auth-buttons">
             <?php if(isset($_SESSION['username'])): ?>

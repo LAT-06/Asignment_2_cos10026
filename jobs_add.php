@@ -13,7 +13,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
     <meta charset="UTF-8">
     <title>Manage</title>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/style-manage.css">
+    <link rel="stylesheet" href="styles/style-jobs_add.css">
 </head>
 <body>
 <header>
@@ -40,7 +40,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
         </div>
     </header>
     <div id="idk">
-        <h1>Admin Management Page</h1>
+        <h1>Admin Management Job Page</h1>
     </div>
 
 </body>
