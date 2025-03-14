@@ -17,6 +17,7 @@ $salary = (isset($_SESSION['salary'])) ? $_SESSION['salary'] : 10000;
 $essential = (isset($_SESSION['essential'])) ? $_SESSION['essential'] : "essential";
 $preferable = (isset($_SESSION['preferable'])) ? $_SESSION['preferable'] : "preferable";
 $numberOfResponsibility = (isset($_SESSION['numberOfResponsibility'])) ? $_SESSION['numberOfResponsibility'] : 3;
+$numberOfEmployee =  (isset($_SESSION['numberOfEmployee'])) ? $_SESSION['numberOfEmployee'] : 2;
 $reportTo = (isset($_SESSION['reportTo'])) ? $_SESSION['reportTo'] : "reportTo";
 $content = (isset($_SESSION['responsibility'])) ? $_SESSION['responsibility'] : ["DResponsibility 1", "DResponsibility 2", "DResponsibility 3"];
 $fetchQuery = (isset($_SESSION['fetchQuery'])) ? $_SESSION['fetchQuery'] : "fetchQuery";
@@ -28,7 +29,7 @@ function ClearManageJobsData(){
         unset($_SESSION['jobRef'], $_SESSION['jobTitle'], $_SESSION['jobDesc'],
         $_SESSION['salary'], $_SESSION['essential'], $_SESSION['preferable'],
         $_SESSION['numberOfResponsibility'], $_SESSION['reportTo'],
-        $_SESSION['responsibility']
+        $_SESSION['responsibility'], $_SESSION['numberOfEmployee']
         );
 }
 
@@ -67,6 +68,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION['preferable'] = $preferable;
                 $numberOfResponsibility = $_POST['numberOfResponsibility'];
                 $_SESSION['numberOfResponsibility'] = $numberOfResponsibility;
+                $numberOfEmployee = $_POST['numberOfEmployee'];
+                $_SESSION['numberOfEmployee'] = $numberOfEmployee;
                 $reportTo = $_POST['reportTo'];
                 $_SESSION['reportTo'] = $reportTo;
             } else {
@@ -100,6 +103,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $preferable = $job['preferable'];
                 $_SESSION['reportTo'] = $job['report_to'];
                 $reportTo = $job['report_to'];
+                $_SESSION['numberOfEmployee'] = $job['number_of_employee'];
+                $numberOfEmployee = $job['number_of_employee'];
             } else {
                 if(isset($_POST['jobTitle'])){
                     $jobTitle = $_POST['jobTitle'];
@@ -113,6 +118,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $preferable =  $_POST['preferable'];
                     $_SESSION['preferable'] = $preferable;
                     $reportTo = $_POST['reportTo'];
+                    $_SESSION['numberOfEmployee'] = $numberOfEmployee;
+                    $numberOfEmployee = $_POST['numberOfEmployee'];
                     $_SESSION['reportTo'] = $reportTo;
                     $_SESSION['step'] = 3;
                     $step = 3;
@@ -226,8 +233,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     elseif($option == "insert"):
                         echo "<h2>Insert Results:</h2>";
                         $sql_table = "jobs";
-                        $insertQueryJobs = "INSERT INTO $sql_table (job_ref, job_title, job_description, salary, essential, preferable, report_to, number_of_responsibilities) 
-                                            VALUES ('$jobRef', '$jobTitle', '$jobDesc', '$salary', '$essential', '$preferable', '$reportTo', '$numberOfResponsibility')";
+                        $insertQueryJobs = "INSERT INTO $sql_table (job_ref, job_title, job_description, salary, essential, preferable, report_to, number_of_responsibilities, number_of_employee) 
+                                            VALUES ('$jobRef', '$jobTitle', '$jobDesc', '$salary', '$essential', '$preferable', '$reportTo', '$numberOfResponsibility', '$numberOfEmployee')";
                         $result = mysqli_query($conn, $insertQueryJobs);
                         if($result){
                             echo "<p>$jobRef is inserted successfully in $sql_table</p>";
@@ -251,7 +258,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $queryUpdateJobTitle = "UPDATE $sql_table SET job_title = '$jobTitle' WHERE job_ref='$jobRef'";
                         $result = mysqli_query($conn, $queryUpdateJobTitle);
                         if($result){
-                            echo "<p>$jobTitle updated successfully to $sql_table</p><br>
+                            echo "<p>Job Title: $jobTitle updated successfully to $sql_table</p><br>
                                     with Query: $queryUpdateJobTitle";
                         } else {
                             echo "error with query $queryUpdateJobTitle";
@@ -264,7 +271,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $queryUpdateSalary = "UPDATE $sql_table SET salary = $salary WHERE job_ref='$jobRef'";
                         $result = mysqli_query($conn, $queryUpdateSalary);
                         if($result){
-                            echo" <p>$salary updated successfuly to $sql_table</p>";
+                            echo" <p>Salary: $salary updated successfuly to $sql_table</p>";
+                        }
+
+                        $queryUpdateNumberOfEmployee = "UPDATE $sql_table SET number_of_employee = $numberOfEmployee WHERE job_ref='$jobRef'";
+                        $result = mysqli_query($conn, $queryUpdateNumberOfEmployee);
+                        if($result){
+                            echo "<p>Number Of Employee: $numberOfEmployee updated successfully to $sql_table</p>";
                         }
 
                         $queryUpdateEssential = "UPDATE $sql_table SET essential = '$essential' WHERE job_ref='$jobRef'";

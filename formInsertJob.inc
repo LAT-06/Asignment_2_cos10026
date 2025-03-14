@@ -8,6 +8,8 @@
     <textarea id="jobDesc" name="jobDesc" rows="4" minLength="10" maxlength="4000" required></textarea>
     <label for="salary">Salary:</label>
     <input type="number" id="salary" name="salary" min="1000" max="300000" required>
+    <label for="numberOfEmployee">Number of Employee</label>
+    <input type="number" id="numberOfEmployee" name="numberOfEmployee" min="2" max="1000" required>
 <h3>Requirements</h3>
     <label for="essential">Essential</label>
     <textarea id="essential" name="essential" rows="2" minlength="10" maxlength="400" required></textarea>
