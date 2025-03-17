@@ -16,7 +16,7 @@ function listAllEOIs($conn) {
 }
 
 function listEOIsByPosition($conn, $jobRef) {
-    $query = "SELECT * FROM eoi WHERE job_reference_number = ?";
+    $query = "SELECT * FROM EOI WHERE job_reference_number = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $jobRef);
     $stmt->execute();
@@ -24,7 +24,7 @@ function listEOIsByPosition($conn, $jobRef) {
 }
 
 function listEOIsByApplicant($conn, $firstName, $lastName) {
-    $query = "SELECT * FROM eoi WHERE first_name = ? OR last_name = ?";
+    $query = "SELECT * FROM EOI WHERE first_name = ? OR last_name = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("ss", $firstName, $lastName);
     $stmt->execute();
@@ -32,14 +32,14 @@ function listEOIsByApplicant($conn, $firstName, $lastName) {
 }
 
 function deleteEOIsByJobRef($conn, $jobRef) {
-    $query = "DELETE FROM eoi WHERE job_reference_number = ?";
+    $query = "DELETE FROM EOI WHERE job_reference_number = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $jobRef);
     return $stmt->execute();
 }
 
 function changeEOIStatus($conn, $eoiId, $status) {
-    $query = "UPDATE eoi SET status = ? WHERE id = ?";
+    $query = "UPDATE EOI SET status = ? WHERE id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("si", $status, $eoiId);
     return $stmt->execute();
