@@ -10,13 +10,13 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
 require_once 'setting.php'; // Include database connection file
 
 function listAllEOIs($conn) {
-    $query = "SELECT * FROM EOI";
+    $query = "SELECT * FROM eoi";
     $result = mysqli_query($conn, $query);
     return $result;
 }
 
 function listEOIsByPosition($conn, $jobRef) {
-    $query = "SELECT * FROM EOI WHERE job_reference_number = ?";
+    $query = "SELECT * FROM eoi WHERE job_ref = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $jobRef);
     $stmt->execute();
@@ -24,7 +24,7 @@ function listEOIsByPosition($conn, $jobRef) {
 }
 
 function listEOIsByApplicant($conn, $firstName, $lastName) {
-    $query = "SELECT * FROM EOI WHERE first_name = ? OR last_name = ?";
+    $query = "SELECT * FROM eoi WHERE first_name = ? OR last_name = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("ss", $firstName, $lastName);
     $stmt->execute();
@@ -32,14 +32,14 @@ function listEOIsByApplicant($conn, $firstName, $lastName) {
 }
 
 function deleteEOIsByJobRef($conn, $jobRef) {
-    $query = "DELETE FROM EOI WHERE job_reference_number = ?";
+    $query = "DELETE FROM eoi WHERE job_ref = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $jobRef);
     return $stmt->execute();
 }
 
 function changeEOIStatus($conn, $eoiId, $status) {
-    $query = "UPDATE EOI SET status = ? WHERE id = ?";
+    $query = "UPDATE eoi SET status = ? WHERE eoi_id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("si", $status, $eoiId);
     return $stmt->execute();
@@ -95,17 +95,35 @@ $allEOIs = listAllEOIs($conn);
         <table border="1">
             <tr>
                 <th>ID</th>
+                <th>Job Reference Number</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Job Reference Number</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Street Address</th>
+                <th>Suburb</th>
+                <th>State</th>
+                <th>Postcode</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Skills</th>
                 <th>Status</th>
             </tr>
             <?php while ($row = mysqli_fetch_assoc($allEOIs)): ?>
                 <tr>
-                    <td><?php echo $row['EOInumber']; ?></td>
+                    <td><?php echo $row['eoi_id']; ?></td>
+                    <td><?php echo $row['job_ref']; ?></td>
                     <td><?php echo $row['firstname']; ?></td>
                     <td><?php echo $row['lastname']; ?></td>
-                    <td><?php echo $row['jobnum']; ?></td>
+                    <td><?php echo $row['dob']; ?></td>
+                    <td><?php echo $row['gender']; ?></td>
+                    <td><?php echo $row['street_address']; ?></td>
+                    <td><?php echo $row['suburb']; ?></td>
+                    <td><?php echo $row['state']; ?></td>
+                    <td><?php echo $row['postcode']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['phone']; ?></td>
+                    <td><?php echo $row['skills']; ?></td>
                     <td><?php echo $row['status']; ?></td>
                 </tr>
             <?php endwhile; ?>
