@@ -92,22 +92,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION['jobRef'] = $jobRef;
                 $fetchQuery = "SELECT * FROM $sql_table WHERE job_ref = '$jobRef'";
                 $result = mysqli_query($conn, $fetchQuery);
-            
-                $job = mysqli_fetch_assoc($result);
-                $_SESSION['jobTitle'] = $job['job_title'];
-                $jobTitle = $job['job_title'];
-                $_SESSION['jobDesc'] = $job['job_description'];
-                $jobDesc = $job['job_description'];
-                $_SESSION['salary'] = $job['salary'];
-                $salary = $job['salary'];
-                $_SESSION['essential'] = $job['essential'];
-                $essential = $job['essential'];
-                $_SESSION['preferable'] = $job['preferable'];
-                $preferable = $job['preferable'];
-                $_SESSION['reportTo'] = $job['report_to'];
-                $reportTo = $job['report_to'];
-                $_SESSION['numberOfEmployee'] = $job['number_of_employee'];
-                $numberOfEmployee = $job['number_of_employee'];
+                if(mysqli_num_rows($result) == 0){
+                    ClearManageJobsData();
+                }else {
+                    $job = mysqli_fetch_assoc($result);
+                    //  if(isset($_SESSION['jobDesc']) && $_SESSION['jobDesc'] != null){
+                    $_SESSION['jobTitle'] = $job['job_title'];
+                    $jobTitle = $job['job_title'];
+                    $_SESSION['jobDesc'] = $job['job_description'];
+                    $jobDesc = $job['job_description'];
+                    $_SESSION['salary'] = $job['salary'];
+                    $salary = $job['salary'];
+                    $_SESSION['essential'] = $job['essential'];
+                    $essential = $job['essential'];
+                    $_SESSION['preferable'] = $job['preferable'];
+                    $preferable = $job['preferable'];
+                    $_SESSION['reportTo'] = $job['report_to'];
+                    $reportTo = $job['report_to'];
+                    $_SESSION['numberOfEmployee'] = $job['number_of_employee'];
+                    $numberOfEmployee = $job['number_of_employee'];
+                    //  }
+                }
+                
+                
+                
             } else {
                 if(isset($_POST['jobTitle'])){
                     $jobTitle = $_POST['jobTitle'];
@@ -183,6 +191,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 elseif($step==2):
                     if($option=="delete"):
                         echo "<h2>Delete Jobs</h2>";
+                        $queryGetJob = "SELECT job_ref, job_title FROM jobs";
+                        $result = mysqli_query($conn, $queryGetJob);
+                        if (mysqli_num_rows($result) > 0):
+                        ?>
+                            <table>
+                                <tr>
+                                    <th>Job Reference Number</th>
+                                    <th>Job Title</th>
+                                </tr>
+                                    <?php while ($row = mysqli_fetch_assoc($result)) {
+                                        echo "<tr><td>" .$row["job_ref"] . "</td>";
+                                        echo "<td>" .$row["job_title"] . "</td></tr>";
+                                    }
+                                    ?>
+                            </table>
+                            <br>
+                        <?php
+                        endif;
                         require_once "formDeleteJob.inc"; 
                     elseif($option=="insert"):
                         echo "<h2>Insert Jobs</h2>";
@@ -202,13 +228,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         }
                     elseif($option == "update"):
                         echo "<h2>Update Jobs</h2>";
-                        if(!isset($_SESSION['jobRef'])):?>
-                            <label for="jobRef">Job Reference Number (5 alphanumeric letter)</label>
-                            <input type="text" id="jobRef" name="jobRef" pattern="^[A-Za-z0-9]{5}$" minlength="5" maxlength="5" required>
+                        
+                        if(!isset($_SESSION['jobRef'])):
+                        $queryGetJob = "SELECT job_ref, job_title FROM jobs";
+                        $result = mysqli_query($conn, $queryGetJob);
+                        if (mysqli_num_rows($result) > 0) {
+                        ?>
+                            <table>
+                                <tr>
+                                    <th>Job Reference Number</th>
+                                    <th>Job Title</th>
+                                </tr>
+                                    <?php while ($row = mysqli_fetch_assoc($result)) {
+                                        echo "<tr><td>" .$row["job_ref"] . "</td>";
+                                        echo "<td>" .$row["job_title"] . "</td></tr>";
+                                    }
+                                    ?>
+                            </table>
+                            <br>
                         <?php
-                        elseif(isset($_SESSION['jobRef']) && !isset($_SESSION['jobTitle']) && $_SESSION['jobTitle'] == null):
-                                ClearManageJobsData();
+                        } else {
+                            echo "No jobs found";
+                        }?>
+                            <div class="option">
+                                <label for="jobRef">Job Reference Number (5 alphanumeric letter)</label>
+                                <input type="text" id="jobRef" name="jobRef" pattern="^[A-Za-z0-9]{5}$" minlength="5" maxlength="5" required>
+                            </div>
+
+                        <?php
+                        elseif(isset($_SESSION['jobRef'])  && isset($_SESSION['jobTitle']) && $_SESSION['jobTitle'] != null):
                             require_once "formUpdateJob.inc";
+                        else:
+                            ClearManageJobsData();
                         endif;
                     ?>
                     <?php endif; ?>
@@ -216,21 +267,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 elseif($step==3):
                     if ($option == "delete"):
                         echo "<h2>Delete Results:</h2>";
+                        
                         $sql_table = "jobs";
-                        $deleteQueryJobs = "DELETE FROM $sql_table WHERE job_ref = '$jobRef'";
-                        $result = mysqli_query($conn, $deleteQueryJobs);
-                        if($result){
-                            echo "<p>$jobRef is deleted successfully in $sql_table</p>";
+                        $getJobQuery = "SELECT job_ref FROm $sql_table WHERE job_ref = '$jobRef'";
+                        $result = mysqli_query($conn, $getJobQuery);
+                        if(mysqli_num_rows($result) == 0){
+                            ClearManageJobsData();
                         } else {
-                            echo "<p>$jobRef failed to delete in $sql_table</p>";
-                        }
-                        $sql_table = "jobs_responsibilities";
-                        $deleteQueryJobsResponsibilities = "DELETE FROM $sql_table WHERE job_ref = '$jobRef'";
-                        $result = mysqli_query($conn, $deleteQueryJobsResponsibilities);
-                        if($result){
-                            echo "<p>$jobRef is deleted successfully in $sql_table</p>";
-                        } else {
-                            echo "<p>$jobRef failed to delete in $sql_table</p>";
+                            $deleteQueryJobs = "DELETE FROM $sql_table WHERE job_ref = '$jobRef'";
+                            $result = mysqli_query($conn, $deleteQueryJobs);
+                            if($result){
+                                echo "<p>$jobRef is deleted successfully in $sql_table</p>";
+                            } else {
+                                echo "<p>$jobRef failed to delete in $sql_table</p>";
+                            }
+                            $sql_table = "jobs_responsibilities";
+                            $deleteQueryJobsResponsibilities = "DELETE FROM $sql_table WHERE job_ref = '$jobRef'";
+                            $result = mysqli_query($conn, $deleteQueryJobsResponsibilities);
+                            if($result){
+                                echo "<p>$jobRef is deleted successfully in $sql_table</p>";
+                            } else {
+                                echo "<p>$jobRef failed to delete in $sql_table</p>";
+                            }
                         }
                     elseif($option == "insert"):
                         echo "<h2>Insert Results:</h2>";
@@ -260,10 +318,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $queryUpdateJobTitle = "UPDATE $sql_table SET job_title = '$jobTitle' WHERE job_ref='$jobRef'";
                         $result = mysqli_query($conn, $queryUpdateJobTitle);
                         if($result){
-                            echo "<p>Job Title: $jobTitle updated successfully to $sql_table</p><br>
-                                    with Query: $queryUpdateJobTitle";
+                            echo "<p>Job Title: $jobTitle updated successfully to $sql_table</p>";
                         } else {
-                            echo "error with query $queryUpdateJobTitle";
+                            echo "<p>error with query $queryUpdateJobTitle</p>";
                         }
 
                         $queryUpdateJobDesc = "UPDATE $sql_table SET job_description = '$jobDesc' WHERE job_ref='$jobRef'";
@@ -284,14 +341,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         $queryUpdateEssential = "UPDATE $sql_table SET essential = '$essential' WHERE job_ref='$jobRef'";
                         $result = mysqli_query($conn, $queryUpdateEssential);
-
+                        if($result){
+                            echo "<p>Essential: $essential updated successfully to $sql_table</p>";
+                        }
 
                         $queryUpdatePreferable = "UPDATE $sql_table SET preferable = '$preferable' WHERE job_ref='$jobRef'";
                         $result = mysqli_query($conn, $queryUpdatePreferable);
+                        if($result){
+                            echo "<p>Preferable: $preferable updated successfully to $sql_table</p>";
+                        }
 
 
                         $queryUpdateReportTo = "UPDATE $sql_table SET report_to= '$reportTo' WHERE job_ref='$jobRef'";
                         $result = mysqli_query($conn, $queryUpdateReportTo);
+                        if($result){
+                            echo "<p>Report To: $reportTo updated successfully to $sql_table</p>";
+                        }
                     endif;
                 ?>
                 <?php endif; 
