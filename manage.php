@@ -59,6 +59,7 @@ $allEOIs = listAllEOIs($conn);
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+    <meta viewport="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Manage</title>
     <link rel="stylesheet" href="styles/style.css">
