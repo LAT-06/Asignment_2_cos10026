@@ -10,7 +10,7 @@ if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
 require_once 'setting.php'; // Include database connection file
 
 function listAllEOIs($conn) {
-    $query = "SELECT * FROM eoi";
+    $query = "SELECT * FROM EOI";
     $result = mysqli_query($conn, $query);
     return $result;
 }
