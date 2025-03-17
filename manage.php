@@ -102,7 +102,7 @@ $allEOIs = listAllEOIs($conn);
             </tr>
             <?php while ($row = mysqli_fetch_assoc($allEOIs)): ?>
                 <tr>
-                    <td><?php echo $row['EOInum']; ?></td>
+                    <td><?php echo $row['EOInumber']; ?></td>
                     <td><?php echo $row['firstname']; ?></td>
                     <td><?php echo $row['lastname']; ?></td>
                     <td><?php echo $row['jobnum']; ?></td>
