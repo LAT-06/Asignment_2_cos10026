@@ -48,8 +48,11 @@ function changeEOIStatus($conn, $eoiId, $status) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delete_job_ref'])) {
         deleteEOIsByJobRef($conn, $_POST['delete_job_ref']);
-    } elseif (isset($_POST['change_status_id']) && isset($_POST['new_status'])) {
-        changeEOIStatus($conn, $_POST['change_status_id'], $_POST['new_status']);
+    } 
+    elseif (isset($_POST['change_status_id']) 
+    && isset($_POST['new_status'])) {
+        changeEOIStatus($conn, $_POST['change_status_id'], 
+        $_POST['new_status']);
     }
 }
 
