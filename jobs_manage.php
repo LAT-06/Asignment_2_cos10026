@@ -31,6 +31,9 @@ function ClearManageJobsData(){
         $_SESSION['numberOfResponsibility'], $_SESSION['reportTo'],
         $_SESSION['responsibility'], $_SESSION['numberOfEmployee']
         );
+        $step = 1;
+        header("Location: jobs_manage.php");
+        exit();
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -139,6 +142,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/style-jobs_manage.css">
@@ -202,10 +206,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <label for="jobRef">Job Reference Number (5 alphanumeric letter)</label>
                             <input type="text" id="jobRef" name="jobRef" pattern="^[A-Za-z0-9]{5}$" minlength="5" maxlength="5" required>
                         <?php
-                        elseif(isset($_SESSION['jobRef'])):
-                            if(!isset($_SESSION['jobTitle'])){
+                        elseif(isset($_SESSION['jobRef']) && !isset($_SESSION['jobTitle']) && $_SESSION['jobTitle'] == null):
                                 ClearManageJobsData();
-                            }
                             require_once "formUpdateJob.inc";
                         endif;
                     ?>
