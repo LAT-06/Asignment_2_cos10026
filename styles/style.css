@@ -294,13 +294,6 @@ left: calc(78% - 20px); /* Align with the fifth button */
     to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 768px) {
-    .stat-item {
-        width: 100%;
-        margin: 10px;
-    }
-}
-
 /* Blur Container */
 /* Blur Container */
 .blur-container {
@@ -435,3 +428,336 @@ footer a:hover {
     background-color: #FBC403;
     color: #000;
 }
+
+
+
+/*
+filename: style.css
+author: Original + Responsive Updates
+Description: homepage with responsive breakpoints
+*/
+/* Base styles remain unchanged */
+
+/* Add these responsive breakpoints to your existing CSS */
+
+/* 25% viewport width */
+@media (max-width: 480px) {
+    /* Navigation */
+    nav {
+        width: 95%;
+        margin: 10px auto;
+        height: auto;
+        padding: 8px 0;
+    }
+    
+    .btn {
+        font-size: 13px;
+        padding: 4px;
+    }
+    
+    .line {
+        display: none; /* Hide the animated lines on small screens */
+    }
+    
+    /* Header elements */
+    #slogan {
+        display: flex;
+        font-size: 22px;
+        top: 110px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -70%);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+    }
+    
+    .innovation {
+        display: block;
+        position: relative;
+        margin-top: 12px;
+        top: 80px;
+        left: 0;
+    }
+    
+    /* Learn more button */
+    .frame {
+        width: 100%;
+        margin: 20px auto;
+    }
+    
+    .frame a {
+        position: relative;
+        top: 80px;
+        left: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+    }
+    
+    /* Blur container */
+    .blur-container {
+        top: 180px;
+        padding: 10px;
+        width: 80%;
+    }
+    
+    .blur-title {
+        font-size: 1.2rem;
+    }
+    
+    .blur-description {
+        font-size: 0.8rem;
+    }
+    
+    /* Authentication buttons */
+    .auth-buttons {
+        top: 5px;
+        right: 5px;
+    }
+    
+    .auth-buttons a {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+    
+    /* Admin links */
+    .admin-link {
+        top: 5px;
+        flex-wrap: wrap;    
+        display: flex;
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+    
+    .admin-link-1 {
+        flex-wrap: wrap;    
+
+        right: 100px;
+    }
+    
+    .admin-link-2 {
+        flex-wrap: wrap;    
+
+        right: 160px;
+    }
+    
+    /* Team section */
+    .team-image {
+        height: 150px;
+        width: 95%;
+    }
+    
+    /* Stats section */
+    .stat-item {
+        margin: 10px 0;
+        width: 90%;
+        
+    }
+    
+    .stat-label {
+        font-size: 1.1em;
+    }
+    
+    .stat-value {
+        font-size: 1.6em;
+    }
+    
+    /* Footer */
+    footer {
+        font-size: 12px;
+        padding: 10px 0;
+    }
+}
+
+/* 50% viewport width */
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Navigation */
+    nav {
+        width: 90%;
+    }
+    
+    .btn {
+        font-size: 14px;
+    }
+    
+    /* Header elements */
+    #slogan {
+        font-size: 28px;
+        top: 150px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -70%);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+    }
+    
+    /* Learn more button */
+    .frame {
+        width: 100%;
+    }
+    
+    .frame a {
+        position: relative;
+        top: 100px;
+        left: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+    }
+    
+    /* Blur container */
+    .blur-container {
+        top: 200px;
+        width: 85%;
+    }
+    
+    .blur-title {
+        font-size: 1.5rem;
+    }
+    
+    /* Authentication buttons */
+    .auth-buttons a {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    /* Admin links */
+    .admin-link {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .admin-link-1 {
+        right: 130px;
+    }
+    
+    .admin-link-2 {
+        right: 210px;
+    }
+    
+    /* Team section */
+    .team-image {
+        height: 200px;
+        width: 85%;
+    }
+    
+    /* Stats section */
+    .stat-item {
+        margin: 15px;
+        width: 3000px;
+    }
+}
+
+/* 75% viewport width */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Navigation */
+    nav {
+        width: 80%;
+    }
+    
+    /* Header elements */
+    #slogan {
+        font-size: 38px;
+        top: 180px;
+        left: 40%;
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translate(-80%, -50%);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+    }
+    
+    /* Learn more button */
+    .frame a {
+        top: 140px;
+        left: -150px;
+    }
+    
+    /* Blur container */
+    .blur-container {
+        top: 240px;
+        width: 80%;
+    }
+    
+    /* Team section */
+    .team-image {
+        height: 250px;
+        max-width: 500px;
+    }
+    
+    /* Stats section */
+    .stat-item {
+        width: 3000px;
+    }
+}
+
+/* 100% viewport width */
+@media (min-width: 1025px) {
+    /* Original styles already handle this case */
+    /* Just ensure the animations work correctly */
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translate(0, -50%);
+        }
+        to {
+            opacity: 1;
+            transform: translate(23%, -50%);
+        }
+    }
+}
+
+/* General improvements that work at all sizes */
+
+/* Ensures smooth transitions between breakpoints */
+body * {
+    transition: all 0.3s ease;
+}
+
+/* Improve focus state for better accessibility */
+.btn:focus, .custom-btn:focus, .auth-buttons a:focus, .admin-link:focus {
+    outline: 2px solid #FBC403;
+    outline-offset: 2px;
+}
+
+/* Ensure images scale properly */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Improve background image scaling */
+.home_page::before {
+    background-size: cover;
+    background-position: center;
+}
+
+/* Improve text readability */
+.blur-container {
+    box-sizing: border-box;
+}
+
