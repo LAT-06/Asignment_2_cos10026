@@ -116,8 +116,8 @@ $allEOIs = listAllEOIs($conn);
                 <tr>
                     <td><?php echo $row['eoi_id']; ?></td>
                     <td><?php echo $row['job_ref']; ?></td>
-                    <td><?php echo $row['first_name']; ?></td>
-                    <td><?php echo $row['last_name']; ?></td>
+                    <td><?php echo $row['firstname']; ?></td>
+                    <td><?php echo $row['lastname']; ?></td>
                     <td><?php echo $row['dob']; ?></td>
                     <td><?php echo $row['gender']; ?></td>
                     <td><?php echo $row['street_address']; ?></td>
