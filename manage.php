@@ -92,7 +92,7 @@ $allEOIs = listAllEOIs($conn);
     <div id="idk">
         <h1>Admin Management Page</h1>
         <h2>List of all EOIs</h2>
-        <table>
+        <table border="1">
             <tr>
                 <th>ID</th>
                 <th>First Name</th>
