@@ -77,3 +77,10 @@ table{
     align-self: center;
     position: relative;
 }
+
+table{
+    border: 2px solid gray;
+    border-collapse: collapse;
+    background-color: black;
+    color: white;
+}
