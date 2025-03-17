@@ -1,6 +1,6 @@
 <?php
 // config.php - Cấu hình kết nối database
-$host = "feenix-mariadb-web.swin.edu.au";
+$host = "feenix-mariadb.swin.edu.au";
 $user = "s105544477"; // Sử dụng username bạn đã cung cấp
 $pwd = "Khanh105544477"; // Sử dụng password bạn đã cung cấp
 $sql_db = "s105544477_db"; // Sử dụng database bạn đã cung cấp
