@@ -4,6 +4,7 @@ session_start(); // Bắt đầu phiên
 include "setting.php";
 $queryGetJobs = "SELECT * FROM jobs";
 $result = mysqli_query($conn, $queryGetJobs);
+
 ?>
 
 <!DOCTYPE html>
@@ -111,6 +112,21 @@ $result = mysqli_query($conn, $queryGetJobs);
                         echo "<h1>No Job is in need</h1>";
                     } elseif(mysqli_num_rows($result) > 0) {
                         while($job = mysqli_fetch_assoc($result)){
+                            $queryGetEOIs = "SELECT job_ref FROM eoi WHERE job_ref = '" . $job['job_ref'] ."'";
+                            $queryGetEmployedEOIs = "SELECT job_ref, status FROM eoi WHERE job_ref = '" . $job['job_ref'] . "' AND status = 'Final'";
+                            $resultEOI = mysqli_query($conn, $queryGetEOIs);
+                            $resultEmployedEOIs = mysqli_query($conn, $queryGetEmployedEOIs);
+
+                            $count = mysqli_num_rows($resultEOI);
+                            // Number of Resumes / CV
+                            $countEmployed = mysqli_num_rows($resultEmployedEOIs);
+                            // Number of accepted employee.
+                            if($count != 0){
+                                $percentageEmployed = (int)($countEmployed * 100 / $count);
+                            } else {
+                                $percentageEmployed = 0;
+                            }
+                            
                 ?>
                             <div class="card-flip">
                                 <h2 class="card-front">
@@ -121,16 +137,16 @@ $result = mysqli_query($conn, $queryGetJobs);
                                     <h2 class="card-back-header">7 days left for recruiting</h2>
                                     <div class="card-back-mid">
                                         <div class="progress-bar-container">
-                                            <div id="progress-bar"></div>
-                                            <h2 class="progress-bar-percentage">75%</h2>
+                                            <div class="progress-bar" style="height: <?php echo $percentageEmployed; ?>%;" ></div>
+                                            <h2 class="progress-bar-percentage"><?php echo $percentageEmployed . "%" ?></h2>
                                         </div>
                                         <ul class="metric-wrapper">
                                             <li>
-                                                <strong class="metric-stats">75%</strong>
+                                                <strong class="metric-stats"><?php echo $percentageEmployed . "%" ?></strong>
                                                 <p> of available space is employed</p>
                                             </li>
                                             <li>
-                                                <strong class="metric-stats">157</strong>
+                                                <strong class="metric-stats"><?php echo $count?></strong>
                                                 <p> resumes, CVs are received</p>
                                             </li>
                                         </ul>

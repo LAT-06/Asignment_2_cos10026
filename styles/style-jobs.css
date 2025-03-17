@@ -224,7 +224,7 @@ maintain position of components in 3D when using transform */
     background-color: orange;
 }
 /* Specific % of already - employed */
-#fsd01{
+/* #fsd01{
     height: 75%;
 }
 
@@ -238,7 +238,7 @@ maintain position of components in 3D when using transform */
 
 #uxd01{
     height: 22%;
-}
+} */
 
 /* Responsive font-size for progress bar % */
 .progress-bar-percentage{
