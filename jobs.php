@@ -113,14 +113,19 @@ $result = mysqli_query($conn, $queryGetJobs);
                         echo "<h1>No Job is in need</h1>";
                     } elseif(mysqli_num_rows($result) > 0) {
                         while($job = mysqli_fetch_assoc($result)){
-                            $queryGetEOIs = "SELECT job_ref FROM eoi WHERE job_ref = '" . $job['job_ref'] ."'";
-                            $queryGetEmployedEOIs = "SELECT job_ref, status FROM eoi WHERE job_ref = '" . $job['job_ref'] . "' AND status = 'Final'";
+                            $queryGetEOIs = "SELECT COUNT(*) as count FROM eoi WHERE job_ref = '" . $job['job_ref'] ."'";
+                            $queryGetEmployedEOIs = "SELECT COUNT(*) as count FROM eoi WHERE job_ref = '" . $job['job_ref'] . "' AND status = 'Final'";
+
                             $resultEOI = mysqli_query($conn, $queryGetEOIs);
                             $resultEmployedEOIs = mysqli_query($conn, $queryGetEmployedEOIs);
-                            $count = mysqli_num_rows($resultEOI);
                             // Number of Resumes / CV
-                            $countEmployed = mysqli_num_rows($resultEmployedEOIs);
+                            $rowEOI = mysqli_fetch_assoc($resultEOI);
+                            $rowEmployedEOI = mysqli_fetch_assoc($resultEmployedEOIs);
+
+                            $count = $rowEOI['count'];
                             // Number of accepted employee.
+                            $countEmployed = $rowEmployedEOI['count'];
+                            
                             if($count != 0){
                                 $percentageEmployed = (int)($countEmployed * 100 / $count);
                             } else {
@@ -128,35 +133,48 @@ $result = mysqli_query($conn, $queryGetJobs);
                             }
                             
                 ?>
-                            <div class="card-flip">
-                                <h2 class="card-front">
-                                    <?php echo $job['job_title']?><br>
-                                    <?php echo $job['job_ref']?>
-                                </h2>
-                                <div class="card-back">
-                                    <h2 class="card-back-header">7 days left for recruiting</h2>
-                                    <div class="card-back-mid">
-                                        <div class="progress-bar-container">
-                                            <div class="progress-bar" style="height: <?php echo $percentageEmployed; ?>%;" ></div>
-                                            <h2 class="progress-bar-percentage"><?php echo $percentageEmployed . "%" ?></h2>
+                        <details>
+                            <summary>
+                                <div class="card-flip">
+                                    <h2 class="card-front">
+                                        <?php echo $job['job_title']?><br>
+                                        <?php echo $job['job_ref']?>
+                                    </h2>
+                                    <div class="card-back">
+                                        <h2 class="card-back-header">7 days left for recruiting</h2>
+                                        <div class="card-back-mid">
+                                            <div class="progress-bar-container">
+                                                <div class="progress-bar" style="height: <?php
+                                                echo $percentageEmployed;
+                                                 ?>%;" ></div>
+                                                <h2 class="progress-bar-percentage"><?php
+                                                echo $percentageEmployed . "%";
+                                                 ?></h2>
+                                            </div>
+                                            <ul class="metric-wrapper">
+                                                <li>
+                                                    <strong class="metric-stats"><?php
+                                                    echo $percentageEmployed . "%";
+                                                    ?></strong>
+                                                    <p> of available space is employed</p>
+                                                </li>
+                                                <li>
+                                                    <strong class="metric-stats"><?php
+                                                     echo $count
+                                                     ?></strong>
+                                                    <p> resumes, CVs are received</p>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <ul class="metric-wrapper">
-                                            <li>
-                                                <strong class="metric-stats"><?php echo $percentageEmployed . "%" ?></strong>
-                                                <p> of available space is employed</p>
-                                            </li>
-                                            <li>
-                                                <strong class="metric-stats"><?php echo $count?></strong>
-                                                <p> resumes, CVs are received</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-back-footer">
-                                        <h3>Be one of us!</h3><br>
-                                        <h3>We are looking for you!</h3>
+                                        <div class="card-back-footer">
+                                            <h3>Be one of us!</h3><br>
+                                            <h3>We are looking for you!</h3>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </summary>
+                        </details>
+
                 <?php
                         }
                     }

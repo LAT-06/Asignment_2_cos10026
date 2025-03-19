@@ -151,10 +151,14 @@ maintain position of components in 3D when using transform */
     background-color: #1C1C1C;
     position: relative;
     transform-style: preserve-3d;
+    cursor: pointer;
 }
 
-.card-flip:hover{
+details[open] .card-flip{
     transform: rotateY(180deg);
+}
+summary{
+    list-style: none;
 }
 /* Two faces of the card share mutual styling and some different styling */
 .card-front, .card-back {
@@ -192,7 +196,7 @@ maintain position of components in 3D when using transform */
     text-align: center;
 }
 
-.card-flip:hover .card-back .card-back-header{
+details[open] .card-flip .card-back .card-back-header{
     animation: slideInDown 0.6s linear;
 }
 /* Back of the card mid container */
@@ -216,7 +220,7 @@ maintain position of components in 3D when using transform */
     position: relative;
 }
 
-.card-flip:hover .card-back .card-back-mid .progress-bar-container{
+details[open] .card-flip .card-back .card-back-mid .progress-bar-container{
     animation: slideInLeft 0.6s linear 1;
 }
 .progress-bar{
@@ -224,21 +228,7 @@ maintain position of components in 3D when using transform */
     background-color: orange;
 }
 /* Specific % of already - employed */
-/* #fsd01{
-    height: 75%;
-}
 
-#db456{
-    height: 57%;
-}
-
-#pm789{
-    height: 85%;
-}
-
-#uxd01{
-    height: 22%;
-} */
 
 /* Responsive font-size for progress bar % */
 .progress-bar-percentage{
@@ -258,7 +248,7 @@ maintain position of components in 3D when using transform */
 }
 
 
-.card-flip:hover .card-back .card-back-mid .metric-wrapper{
+details[open] .card-flip .card-back .card-back-mid .metric-wrapper{
     animation: slideInRight 0.6s linear;
 }
 
@@ -277,7 +267,7 @@ maintain position of components in 3D when using transform */
     text-align: center;
 }
 
-.card-flip:hover .card-back .card-back-footer{
+details[open] .card-flip .card-back .card-back-footer{
     animation: slideInUp 0.6s linear;
 }
 
