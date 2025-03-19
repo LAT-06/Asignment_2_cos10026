@@ -105,6 +105,7 @@ $result = mysqli_query($conn, $queryGetJobs);
         <aside>
             <div class="aside-wrapper">
                 <?php 
+                    $queryGetJobs = "SELECT job_ref, job_title FROM jobs";
                     $result = mysqli_query($conn, $queryGetJobs);
                     if(!$result){
                         echo "<h1>Error querying database</h1>";
@@ -116,7 +117,6 @@ $result = mysqli_query($conn, $queryGetJobs);
                             $queryGetEmployedEOIs = "SELECT job_ref, status FROM eoi WHERE job_ref = '" . $job['job_ref'] . "' AND status = 'Final'";
                             $resultEOI = mysqli_query($conn, $queryGetEOIs);
                             $resultEmployedEOIs = mysqli_query($conn, $queryGetEmployedEOIs);
-
                             $count = mysqli_num_rows($resultEOI);
                             // Number of Resumes / CV
                             $countEmployed = mysqli_num_rows($resultEmployedEOIs);
