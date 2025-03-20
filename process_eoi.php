@@ -14,10 +14,7 @@
             exit();
         }
 
-        $host = "localhost";
-        $user = "root";
-        $pwd = "";
-        $sql_db = "s105544477_db";
+        require_once "setting.php";
         $conn = mysqli_connect ($host, $user, $pwd, $sql_db);
 
         // Check connection
