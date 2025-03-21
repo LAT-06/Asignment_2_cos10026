@@ -94,67 +94,73 @@ $allEOIs = listAllEOIs($conn);
     </header>
     <div id="all_eois">
         <h1>Admin Management Page</h1>
-        <h2>List of all EOIs</h2>
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Job Reference Number</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Date of Birth</th>
-                <th>Gender</th>
-                <th>Street Address</th>
-                <th>Suburb</th>
-                <th>State</th>
-                <th>Postcode</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Skills</th>
-                <th>Status</th>
-            </tr>
-            <?php while ($row = mysqli_fetch_assoc($allEOIs)): ?>
+        <div id="all_eois_table">
+            <h2>List of all EOIs</h2>
+            <table>
                 <tr>
-                    <td><?php echo $row['eoi_id']; ?></td>
-                    <td><?php echo $row['job_ref']; ?></td>
-                    <td><?php echo $row['first_name']; ?></td>
-                    <td><?php echo $row['last_name']; ?></td>
-                    <td><?php echo $row['dob']; ?></td>
-                    <td><?php echo $row['gender']; ?></td>
-                    <td><?php echo $row['street_address']; ?></td>
-                    <td><?php echo $row['suburb']; ?></td>
-                    <td><?php echo $row['state']; ?></td>
-                    <td><?php echo $row['postcode']; ?></td>
-                    <td><?php echo $row['email']; ?></td>
-                    <td><?php echo $row['phone']; ?></td>
-                    <td><?php echo $row['skills']; ?></td>
-                    <td><?php echo $row['status']; ?></td>
+                    <th>ID</th>
+                    <th>Job Reference Number</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Street Address</th>
+                    <th>Suburb</th>
+                    <th>State</th>
+                    <th>Postcode</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Skills</th>
+                    <th>Status</th>
                 </tr>
-            <?php endwhile; ?>
-        </table>
+                <?php while ($row = mysqli_fetch_assoc($allEOIs)): ?>
+                    <tr>
+                        <td><?php echo $row['eoi_id']; ?></td>
+                        <td><?php echo $row['job_ref']; ?></td>
+                        <td><?php echo $row['first_name']; ?></td>
+                        <td><?php echo $row['last_name']; ?></td>
+                        <td><?php echo $row['dob']; ?></td>
+                        <td><?php echo $row['gender']; ?></td>
+                        <td><?php echo $row['street_address']; ?></td>
+                        <td><?php echo $row['suburb']; ?></td>
+                        <td><?php echo $row['state']; ?></td>
+                        <td><?php echo $row['postcode']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                        <td><?php echo $row['phone']; ?></td>
+                        <td><?php echo $row['skills']; ?></td>
+                        <td><?php echo $row['status']; ?></td>
+                    </tr>
+                <?php endwhile; ?>
+            </table>
+        </div>
 
-        <h2>Delete EOIs by Job Reference Number</h2>
-        <form method="post" action="manage.php">
-            <label for="delete_job_ref">Job Reference Number:</label>
-            <input type="text" id="delete_job_ref" name="delete_job_ref" required>
-            <button type="submit">Delete</button>
-        </form>
+        <div id="delete by job_ref">
+            <h2>Delete EOIs by Job Reference Number</h2>
+            <form method="post" action="manage.php">
+                <label for="delete_job_ref">Job Reference Number:</label>
+                <input type="text" id="delete_job_ref" name="delete_job_ref" required>
+                <button type="submit">Delete</button>
+            </form>
+        </div>
 
-        <h2>Change EOI Status</h2>
-        <form method="post" action="manage.php">
-            <label for="change_status_id">EOI ID:</label>
-            <input type="text" id="change_status_id" name="change_status_id" required>
-            <label for="new_status">New Status:</label>
-            <select name="new_status" id="new_status" required>
-                <option value="">Select New Status</option>
-                <?php
-                $new_status = array('New', 'Current', 'Final');
-                foreach ($new_status as $new_status) {
-                    $selected = (isset($form_data['new_status']) && $form_data['new_status'] == $new_status) ? 'selected' : '';
-                    echo "<option value=\"$new_status\" $selected>$new_status</option>";
-                }
-                ?>
-            </select>
+        <div id="change_status">
+            <h2>Change EOI Status</h2>
+            <form method="post" action="manage.php">
+                <label for="change_status_id">EOI ID:</label>
+                <input type="text" id="change_status_id" name="change_status_id" required>
+                <label for="new_status">New Status:</label>
+                <select name="new_status" id="new_status" required>
+                    <option value="">Select New Status</option>
+                    <?php
+                    $new_status = array('New', 'Current', 'Final');
+                    foreach ($new_status as $new_status) {
+                        $selected = (isset($form_data['new_status']) && $form_data['new_status'] == $new_status) ? 'selected' : '';
+                        echo "<option value=\"$new_status\" $selected>$new_status</option>";
+                    }
+                    ?>
+                </select>
             <button type="submit">Change Status</button>
+        </div>
         </form>
     </div>
 
