@@ -25,6 +25,12 @@ h1 {
     border-collapse: collapse;
 }
 
+caption {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #1e1e1e;
+    padding-top: 1%;
+}
 th {
     background-color: #050301;
     color: #D3D3D3;

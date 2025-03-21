@@ -94,9 +94,9 @@ $allEOIs = listAllEOIs($conn);
     </header>
     <div id="all_eois">
         <h1>Admin Management Page</h1>
-        <div id="all_eois_table">
-            <h2>List of all EOIs</h2>
+        <div id="all_eois_table">          
             <table>
+                <caption><h2>List of all EOIs</h2></caption>
                 <tr>
                     <th>ID</th>
                     <th>Job Reference Number</th>
