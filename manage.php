@@ -144,7 +144,16 @@ $allEOIs = listAllEOIs($conn);
             <label for="change_status_id">EOI ID:</label>
             <input type="text" id="change_status_id" name="change_status_id" required>
             <label for="new_status">New Status:</label>
-            <input type="text" id="new_status" name="new_status" required>
+            <select name="new_status" id="new_status" required>
+                <option value="">Select New Status</option>
+                <?php
+                $new_status = array('New', 'Current', 'Final');
+                foreach ($new_status as $new_status) {
+                    $selected = (isset($form_data['new_status']) && $form_data['new_status'] == $new_status) ? 'selected' : '';
+                    echo "<option value=\"$new_status\" $selected>$new_status</option>";
+                }
+                ?>
+            </select>
             <button type="submit">Change Status</button>
         </form>
     </div>
