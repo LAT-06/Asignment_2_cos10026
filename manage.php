@@ -134,12 +134,13 @@ $allEOIs = listAllEOIs($conn);
             </table>
         </div>
 
-        <div id="delete by job_ref">
+        <div id="delete_by_job_ref">
             <h2>Delete EOIs by Job Reference Number</h2>
             <form method="post" action="manage.php">
                 <label for="delete_job_ref">Job Reference Number:</label>
                 <input type="text" id="delete_job_ref" name="delete_job_ref" required>
-                <button type="submit">Delete</button>
+                
+                <button class="submitBTN" type="submit">Delete</button>
             </form>
         </div>
 
@@ -148,6 +149,7 @@ $allEOIs = listAllEOIs($conn);
             <form method="post" action="manage.php">
                 <label for="change_status_id">EOI ID:</label>
                 <input type="text" id="change_status_id" name="change_status_id" required>
+
                 <label for="new_status">New Status:</label>
                 <select name="new_status" id="new_status" required>
                     <option value="">Select New Status</option>
@@ -159,9 +161,10 @@ $allEOIs = listAllEOIs($conn);
                     }
                     ?>
                 </select>
-            <button type="submit">Change Status</button>
+
+                <button class="submitBTN" type="submit">Change Status</button>
+            </form>
         </div>
-        </form>
     </div>
 
 </body>

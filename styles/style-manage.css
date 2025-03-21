@@ -13,10 +13,10 @@ h1 {
     color: #DAA520;
 }
 
-#all_eois table {
+#all_eois table  {
     background-color: #1e1e1e;
     color: #D3D3D3;
-    width: 60vw;
+    width: 120%;
     height: auto;
     padding: 25px;
     border-radius: 20px;
@@ -24,11 +24,53 @@ h1 {
     position: relative;
 }
 
+#delete_by_job_ref, #change_status {
+    background-color: #1e1e1e;
+    color: #D3D3D3;
+    width: 105%;
+    height: auto;
+    padding: 25px;
+    border-radius: 20px;
+    justify-self: center;
+    position: relative;
+    margin-top: 3%;
+}
+
 h2{
     margin-top: 0;
     font-size: 2rem;
     text-align: center;
     color: #DAA520;
+}
+
+input, textarea, select {
+    border-radius: 5px;
+    background-color: lightgray;
+    resize: none;
+}   
+
+.submitBTN {
+    margin-top: 25px;
+    background-color: #DAA520;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    align-self: center;
+    position: relative;
+}
+
+.submitBTN:hover {
+    margin-top: 25px;
+    background-color: hsl(43, 74%, 39%);
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    align-self: center;
+    position: relative;
 }
 
 
