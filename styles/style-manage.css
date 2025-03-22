@@ -29,21 +29,24 @@ caption {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: #1e1e1e;
-    padding-top: 1%;
+    padding-top: 1.5%;
 }
+
 th {
     background-color: #050301;
     color: #D3D3D3;
-    padding: 1% 1% 1% 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     text-align: center;
     overflow-wrap: break-word;
-    border: #D3D3D3 1px solid;
+    /* border: #D3D3D3 1px solid; */
     font-size: medium;
 }
 
 td {
-    padding: 0.5% 0.5% 0.5% 0.5%;
-    border: #D3D3D3 1px solid;
+    padding-top: 0.7%;
+    padding-bottom: 0.7%;
+    /* border: #D3D3D3 1px solid; */
     text-align: center;
 }
 
