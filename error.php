@@ -17,9 +17,9 @@ if (!isset($_SESSION['errors'])) {
         foreach ($_SESSION['errors'] as $error) {
             echo "<li>$error</li>";
         }
-        session_unset();
+        // session_unset();
         ?>
     </ul>
-    <a href="apply.html">Go back to the form</a>
+    <a href="apply.php">Go back to the form</a>
 </body>
 </html>
