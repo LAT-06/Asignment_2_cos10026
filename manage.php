@@ -45,6 +45,9 @@ function changeEOIStatus($conn, $eoiId, $status) {
     return $stmt->execute();
 }
 
+$allEOIsByPosition = null;
+$allEOIsByApplicant = null;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delete_job_ref'])) {
         deleteEOIsByJobRef($conn, $_POST['delete_job_ref']);
@@ -53,10 +56,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     && isset($_POST['new_status'])) {
         changeEOIStatus($conn, $_POST['change_status_id'], 
         $_POST['new_status']);
+    }  
+    elseif (isset($_POST['search_job_ref'])) {
+        $jobRef = $_POST['search_job_ref'];
+        $allEOIsByPosition = listEOIsByPosition($conn, $jobRef);
+    } 
+    elseif (isset($_POST['first_name']) && isset($_POST['last_name'])) {
+        $firstName = $_POST['first_name'];
+        $lastName = $_POST['last_name'];
+        $allEOIsByApplicant = listEOIsByApplicant($conn, $firstName, $lastName);
     }
 }
 
 $allEOIs = listAllEOIs($conn);
+
 ?>
 
 <!DOCTYPE html>
@@ -134,6 +147,117 @@ $allEOIs = listAllEOIs($conn);
             </table>
         </div>
 
+        <div id="search_eois_by_job_ref">
+            <h2>Search EOIs by Job Reference Number</h2>
+            <form method="post" action="manage.php">
+                <label for="search_job_ref">Job Reference Number:</label>
+                <input type="text" id="search_job_ref" name="search_job_ref">
+                
+                <button class="submitBTN" type="submit">Search</button>
+            </form>
+        </div>
+        
+        <div id="all_eois_by_position_table">
+            <table>
+                <caption><h2>List of all EOIs by Job Reference</h2></caption>
+                <tr>
+                    <th>ID</th>
+                    <th>Job Reference Number</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Street Address</th>
+                    <th>Suburb</th>
+                    <th>State</th>
+                    <th>Postcode</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Skills</th>
+                    <th>Status</th>
+                </tr>
+                <?php if (@$allEOIsByPosition->num_rows > 0): ?>
+                    <?php while ($row = mysqli_fetch_assoc($allEOIsByPosition)): ?>
+                        <tr>
+                            <td><?php echo $row['eoi_id']; ?></td>
+                            <td><?php echo $row['job_ref']; ?></td>
+                            <td><?php echo $row['first_name']; ?></td>
+                            <td><?php echo $row['last_name']; ?></td>
+                            <td><?php echo $row['dob']; ?></td>
+                            <td><?php echo $row['gender']; ?></td>
+                            <td><?php echo $row['street_address']; ?></td>
+                            <td><?php echo $row['suburb']; ?></td>
+                            <td><?php echo $row['state']; ?></td>
+                            <td><?php echo $row['postcode']; ?></td>
+                            <td><?php echo $row['email']; ?></td>
+                            <td><?php echo $row['phone']; ?></td>
+                            <td><?php echo $row['skills']; ?></td>
+                            <td><?php echo $row['status']; ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr><td colspan="14">No records found.</td></tr>
+                <?php endif; ?>
+            </table>
+        </div>
+
+        <div id="search_eois_by_applicant">
+            <h2>Search EOIs by Applicant</h2>
+            <form method="post" action="manage.php">
+                <label for="first_name">First Name:</label>
+                <input type="text" id="first_name" name="first_name">
+                <label for="last_name">Last Name:</label>
+                <input type="text" id="last_name" name="last_name">
+                 
+                <button class="submitBTN" type="submit">Search</button>
+            </form>
+        </div>
+        
+        <div id="all_eois_by_applicant_table">
+            <table>
+                <caption><h2>List of all EOIs by Applicant</h2></caption>
+                <tr>
+                    <th>ID</th>
+                    <th>Job Reference Number</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Street Address</th>
+                    <th>Suburb</th>
+                    <th>State</th>
+                    <th>Postcode</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Skills</th>
+                    <th>Status</th>
+                </tr>
+                <?php if (@$allEOIsByApplicant->num_rows > 0): ?>
+                    <?php while ($row = mysqli_fetch_assoc($allEOIsByApplicant)): ?>
+                        <tr>
+                            <td><?php echo $row['eoi_id']; ?></td>
+                            <td><?php echo $row['job_ref']; ?></td>
+                            <td><?php echo $row['first_name']; ?></td>
+                            <td><?php echo $row['last_name']; ?></td>
+                            <td><?php echo $row['dob']; ?></td>
+                            <td><?php echo $row['gender']; ?></td>
+                            <td><?php echo $row['street_address']; ?></td>
+                            <td><?php echo $row['suburb']; ?></td>
+                            <td><?php echo $row['state']; ?></td>
+                            <td><?php echo $row['postcode']; ?></td>
+                            <td><?php echo $row['email']; ?></td>
+                            <td><?php echo $row['phone']; ?></td>
+                            <td><?php echo $row['skills']; ?></td>
+                            <td><?php echo $row['status']; ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr><td colspan="14">No records found.</td></tr>
+                <?php endif; ?>
+            </table>
+        </div>
+        
+
         <div id="delete_by_job_ref">
             <h2>Delete EOIs by Job Reference Number</h2>
             <form method="post" action="manage.php">
@@ -162,7 +286,7 @@ $allEOIs = listAllEOIs($conn);
                     ?>
                 </select>
 
-                <button class="submitBTN" type="submit">Change Status</button>
+                <button class="submitBTN" type="submit">Change</button>
             </form>
         </div>
     </div>

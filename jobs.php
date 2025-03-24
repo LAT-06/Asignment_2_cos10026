@@ -179,7 +179,7 @@ $result = mysqli_query($conn, $queryGetJobs);
                         }
                     }
                 ?>
-            </div>
+            </div>  
         </aside>
     </div>
     <footer>

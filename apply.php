@@ -63,7 +63,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['form_data'])) {
     <div class="form-container">               
         <?php if(isset($_SESSION['username'])): ?>
         <div>
-            <form id="applyform" method="post" action="https://mercury.swin.edu.au/it000000/formtest.php">
+            <form id="applyform" method="post" action="manage.php">
                 <div class="user-details">
                     <div class="input-box">
                         <label class="details" for="jobnum">Job Reference Number</label>
