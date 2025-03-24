@@ -160,7 +160,7 @@
         }
 
         // Insert into database
-        $stmt = $conn->prepare("INSERT INTO expressions_of_interest (job_ref, first_name, last_name, dob, gender, street_address, suburb, state, postcode, email, phone, skills) 
+        $stmt = $conn->prepare("INSERT INTO eoi (job_ref, first_name, last_name, dob, gender, street_address, suburb, state, postcode, email, phone, skills) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssssssssss", $job_ref, $first_name, $last_name, $dob_mysql, $gender, $street_address, $suburb, $state, $postcode, $email, $phone, $skills);
 
