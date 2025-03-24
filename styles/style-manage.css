@@ -23,6 +23,8 @@ h1 {
     justify-self: center;
     position: relative;
     border-collapse: collapse;
+    overflow: hidden;
+    
 }
 
 caption {
