@@ -23,7 +23,7 @@
         }   
 
         // Ensure the EOI table exists
-        $table_sql = "CREATE TABLE IF NOT EXISTS expressions_of_interest (
+        $table_sql = "CREATE TABLE IF NOT EXISTS eoi (
         eoi_id INT AUTO_INCREMENT PRIMARY KEY,
         job_ref CHAR(5) NOT NULL,
         first_name VARCHAR(20) NOT NULL,
