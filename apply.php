@@ -63,7 +63,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['form_data'])) {
     <div class="form-container">               
         <?php if(isset($_SESSION['username'])): ?>
         <div>
-            <form id="applyform" method="post" action="manage.php">
+            <form id="applyform" method="post" action="process_eoi.php">
                 <div class="user-details">
                     <div class="input-box">
                         <label class="details" for="jobnum">Job Reference Number</label>
