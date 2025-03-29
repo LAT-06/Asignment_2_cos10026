@@ -89,6 +89,17 @@ input[type="number"]{
     width: 100%;
     background-color: lightgray;
 }
+input[type="radio"]{
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+}
+
+.sortDirection-area{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .submitBtn{
     margin-top: 25px;
     background-color: #DAA520;
