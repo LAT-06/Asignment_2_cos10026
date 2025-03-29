@@ -15,7 +15,7 @@ include "setting.php";
 </head>
 <body class="about_page">
   <header>
-  <nav>
+        <nav>
             <a href="index.php" class="btn">Home</a>
             <a href="about.php" class="btn">About</a>
             <a href="jobs.php" class="btn">Job</a>

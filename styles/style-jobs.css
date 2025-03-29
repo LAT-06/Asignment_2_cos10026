@@ -30,14 +30,14 @@ body{
 .text-container{
     width: 100%;
     padding: 0px 10px;
-    cursor: pointer;
     justify-self: center;
 }
 
 /* Bright yellow h1 */
 h1{
     font: normal calc(2rem + 0.5vw) 'Montserrat'; /* Responsive Font size */
-    color: #FFE715;
+    font-weight: 500;
+    color: #DAA520;
     text-align: center;
     animation: slideInLeftH1 1.25s ease-in-out; /* SlideIn Effect */
 }
@@ -47,6 +47,64 @@ h1{
     position: relative;
     padding-bottom: 50px;
     width: 98vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-area{
+    background-color: #1e1e1e;
+    color: #D3D3D3;
+    width: 60vw;
+    height: auto;
+    padding: 25px;
+    border-radius: 20px;
+    align-self: center;
+    position: relative;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+form h2{
+    margin-top: 0;
+    
+    font: normal calc(1.5rem + 0.5vw) 'Montserrat'; /* Responsive Font size */
+    font-weight: 500;
+    color: #DAA520;
+    text-align: center;
+}
+
+.form-heading{
+    font: normal calc(1rem + 0.25vw) 'Montserrat'; /* Responsive Font size */
+}
+
+.topic-area{
+    display: flex;
+    flex-direction: column;
+}
+input[type="number"]{
+    width: 100%;
+    background-color: lightgray;
+}
+.submitBtn{
+    margin-top: 25px;
+    background-color: #DAA520;
+    width: 100%;
+    padding: 10px;
+    font-size: calc(1rem + 0.25vw);
+    border-radius: 10px;
+    cursor: pointer;
+    align-self: center;
+    position: relative;
+}
+.submitBtn:hover{
+    background-color: hsl(43, 74%, 34%);
+}
+
+.content-wrapper{
     display: flex;
 }
 

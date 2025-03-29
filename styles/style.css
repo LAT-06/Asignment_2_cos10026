@@ -80,7 +80,10 @@ body {
     margin-left: 0.5em; /* Khoảng cách giữa "Beyond" và "Boundaries" */
     white-space: nowrap; /* Ngăn việc xuống dòng */
 }
-
+header{
+    min-width: 500px;
+    width: 100%;
+}
 /* Nav Container */
 nav {
     backdrop-filter: blur(100%);
@@ -634,22 +637,27 @@ Description: homepage with responsive breakpoints
     
     /* Authentication buttons */
     .auth-buttons a {
+        position: absolute;
+        right: 5vw;
+        top: 55px;
         padding: 6px 12px;
         font-size: 12px;
     }
     
     /* Admin links */
     .admin-link {
+        right: 0px;
         padding: 6px 12px;
         font-size: 12px;
     }
     
-    .admin-link-1 {
-        right: 130px;
+    .admin-link-1{
+        right: 25vw;
+        top: 75px;
     }
-    
-    .admin-link-2 {
-        right: 210px;
+    .admin-link-2{
+        right: 40vw;
+        top: 75px;
     }
     
     /* Team section */
@@ -688,6 +696,14 @@ Description: homepage with responsive breakpoints
             opacity: 1;
             transform: translate(-50%, -50%);
         }
+    }
+    .admin-link-1{
+        right: 20px;
+        top: 60px;
+    }
+    .admin-link-2{
+        right: 20px;
+        top: 100px;
     }
     
     /* Learn more button */
